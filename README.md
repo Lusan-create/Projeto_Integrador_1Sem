@@ -1,4 +1,4 @@
-# Projeto_Integrado_1Sem
+# Projeto_Integrador_1Sem
 "Negrão Logistics"
 
 Propósta de Projeto Integrador.
