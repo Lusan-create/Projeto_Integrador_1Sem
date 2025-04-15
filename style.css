@@ -1,5 +1,28 @@
 /*Gerais*/
 
+.imgHeader{
+    height: 75px;
+    width: 100px;
+    
+
+}
+    
+
+
+.headerGeral{
+    /*Configuraçõe flexbox*/
+
+
+    /*Configurações de estilo*/
+    height: 300px;
+    width: 100%;
+    background-color: rgb(rgb(39, 38, 38), green, blue);
+}
+
+.navGeral{
+    background-color:rgb(39, 38, 38);
+}
+
 
 /* CSS da tela de Login*/
 
@@ -34,3 +57,5 @@
 
 
 /*movimentação de peças*/
+
+/*Catálogo*/
