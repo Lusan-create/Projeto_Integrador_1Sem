@@ -74,4 +74,8 @@ Protótipo pelo Figma:
 
 Página Web (HTML, CSS e Java)
 
+Padronização de cores para as páginas
 
+   -  Header:
+   -  Footer:
+   
