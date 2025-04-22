@@ -2,33 +2,38 @@
 <html lang="pt-BR">
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
-    <title>Menu-Principal</title>
+    <title>Ferragens Negrão</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <script src="script.js"></script>
 </head>
-
-
 <body>
-        <header class="headerGeral">
-            <img src="imgs/logo_empresa.png" alt="Logo Ferragens Negrão" class="logoGeral">
-            <section class="user_loginGeral">
+    <div class="container">
+        <header>
+            <img src="img/logo_empresa.png" alt="Logo Ferragens Negrão" class="logo">
+            <div class="user_login">
                 <p>Bem-vindo, Usuário</p>
-                <img src="imgs/user_avatar.png" alt="Foto de perfil do usuário" class="user_picGeral">
-            </section>
+                <img src="img/user_avatar.png" alt="Foto de perfil do usuário" class="user_pic">
+            </div>
         </header>
-
-        <nav class="navbarGeral">
+        <nav class="navbar">
             <ul>
-                <li>Peças</li>
-                <li>Estoque</li>
-                <li>Rastreio</li>
-                <li>Catálogo</li>
+                <li>PEÇAS</li>
+                <li>ESTOQUE</li>
+                <li>RASTREIO</li>
+                <li>CATÁLOGO</li>
             </ul>
         </nav>
-
-    <main>        
+    </div>    
+    <main class="tela_menu">
+        <div class="rastreio">
+            <h1>RASTREIO</h1>
+            <div class="card">
+                <h1>Rastreio</h1>
+                <input type="text" id="cod_rastreio" placeholder="Digite o código de rastreio...">
+            </div>
+        </div>
     </main>
     <footer></footer>
-
 </body>
 </html>
