@@ -1,14 +1,15 @@
+/*Configurações de estilo Geral*/
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
+.bodyGeral {
     background-color: lightgray;
 }
 
-header {
+.headerGeral {
     display: flex;
     background-color: hsl(0, 0%, 15%);
     color: white;
@@ -16,14 +17,54 @@ header {
     box-shadow: 0 0 10px hsl(0, 0%, 0%);
 }
 
-.logo {   
+.logoGeral {   
     height: clamp(60px, 10dvh, 200px);
     margin: 10px;
 }
 
-.user_pic{
+.user_picGeral{
     height: clamp(60px, 10dvh, 80px);
 }
+
+.footerGeral {
+    margin-bottom: auto;
+    height: 13dvh;
+    background-color: hsl(0, 0%, 15%);
+    color: white;
+    box-shadow: 0 0 10px hsl(0, 0%, 0%);
+}
+
+
+/*Página de Login*/
+
+#bt_login {
+    width: clamp(50px, 25%, 100%);
+    height: clamp(50px, 6.5dvh, 100%);
+    background-color: hsl(0, 0%, 0%);
+    color: white;
+    font-size: clamp(1.5rem, 3.5dvh , 3rem);
+    margin: 40px;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+#login {
+    width: clamp(100px, 60%, 100%);
+    height: clamp(100px, 10dvh, 100%);
+    padding: 20px;
+    font-size: clamp(1.5rem, 3.5dvh , 3rem);
+    margin: 20px;
+}
+
+#senha {
+    width: clamp(100px, 60%, 100%);
+    height: clamp(100px, 10dvh, 100%);
+    padding: 20px;
+    font-size: clamp(1.5rem, 3.5dvh , 3rem);
+    margin: 20px;
+}
+
+/**/
 
 .user_login {
     display: flex;
@@ -83,40 +124,10 @@ main {
     align-items: center;
 }
 
-#login {
-    width: clamp(100px, 60%, 100%);
-    height: clamp(100px, 10dvh, 100%);
-    padding: 20px;
-    font-size: clamp(1.5rem, 3.5dvh , 3rem);
-    margin: 20px;
-}
 
-#senha {
-    width: clamp(100px, 60%, 100%);
-    height: clamp(100px, 10dvh, 100%);
-    padding: 20px;
-    font-size: clamp(1.5rem, 3.5dvh , 3rem);
-    margin: 20px;
-}
 
-#bt_login {
-    width: clamp(50px, 25%, 100%);
-    height: clamp(50px, 6.5dvh, 100%);
-    background-color: hsl(0, 0%, 0%);
-    color: white;
-    font-size: clamp(1.5rem, 3.5dvh , 3rem);
-    margin: 40px;
-    padding: 10px 0;
-    cursor: pointer;
-}
 
-footer {
-    margin-bottom: auto;
-    height: 13dvh;
-    background-color: hsl(0, 0%, 15%);
-    color: white;
-    box-shadow: 0 0 10px hsl(0, 0%, 0%);
-}
+
 
 main p {
     font-size: clamp(1.2rem, .5dvh , 3rem);
