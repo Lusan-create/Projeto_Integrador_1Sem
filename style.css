@@ -63,24 +63,27 @@
     align-items: center;
 
     /*Configuraçãoes de estilo*/
-    background-color:hsl(0, 0%, 15%);
+    border-style: solid;
     border-top: 5%;
     border-top-color: lightgray;
+    background-color:hsl(0, 0%, 15%);
     border-left: hsl(0, 0%, 15%);
     border-right: hsl(0, 0%, 15%);
     border-bottom: hsl(0, 0%, 15%);
-    border-style: solid;
+
+
 }
 
 .navbarGeral ul li{
-    background-color: hsl(0, 0%, 15%);
-    color: white;
-    padding: clamp(1rem, 2dvh , 2rem);
-    font-family: 'Helvetica', sans-serif;
-    font-size: clamp(1rem, 2dvh, 2rem);
+    position: relative;
     display: inline-block;
     cursor: pointer;
-    position: relative;
+
+    padding: clamp(1rem, 2dvh , 2rem);
+    font-size: clamp(1rem, 2dvh, 2rem);
+    font-family: 'Helvetica', sans-serif;
+    background-color: hsl(0, 0%, 15%);
+    color: white;
 }
 
 
@@ -91,12 +94,13 @@
 #bt_login {
     width: clamp(50px, 25%, 100%);
     height: clamp(50px, 6.5dvh, 100%);
-    background-color: hsl(0, 0%, 0%);
-    color: white;
-    font-size: clamp(1.5rem, 3.5dvh , 3rem);
+    cursor: pointer;
+
     margin: 40px;
     padding: 10px 0;
-    cursor: pointer;
+    font-size: clamp(1.5rem, 3.5dvh , 3rem);
+    background-color: hsl(0, 0%, 0%);
+    color: white;
 }
 
 #login {
@@ -120,10 +124,6 @@
 
 
 /*Pagina do Menu*/
-
-.container {
-    filter: drop-shadow(0 0 10px hsl(0, 0%, 0%));
-}
 
 
 .navbar ul li::after {
