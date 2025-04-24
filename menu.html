@@ -8,7 +8,6 @@
     <script src="script.js"></script>
 </head>
 <body>
-    <div class="container">
         <header>
             <img src="imgs/logo_empresa.png" alt="Logo Ferragens Negrão" class="logo">
             <div class="user_login">
@@ -16,6 +15,7 @@
                 <img src="imgs/user_avatar.png" alt="Foto de perfil do usuário" class="user_pic">
             </div>
         </header>
+
         <nav class="navbar">
             <ul>
                 <li>PEÇAS</li>
@@ -23,16 +23,24 @@
                 <li>RASTREIO</li>
                 <li>CATÁLOGO</li>
             </ul>
-        </nav>
-    </div>    
+        </nav> 
+
     <main class="tela_menu">
-        <div class="rastreio">
+        
+        <article class="rastreio">
             <h1>RASTREIO</h1>
-            <div class="card">
+
+            <section class="card">
                 <h1>Rastreio</h1>
                 <input type="text" id="cod_rastreio" placeholder="Digite o código de rastreio...">
-            </div>
-        </div>
+
+                <button>
+                    <h1>Rastrear</h1>
+                </button>
+            </section>
+
+        </article>
+
     </main>
     <footer></footer>
 </body>

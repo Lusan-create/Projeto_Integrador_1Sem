@@ -60,11 +60,6 @@ footer {
     background-color: hsl(0, 0%, 25%);
 }
 
-.container {
-    margin-bottom: 0;
-    filter: drop-shadow(0 0 10px hsl(0, 0%, 0%));
-}
-
 .navbar ul li{
     background-color: hsl(0, 0%, 25%);
     color: white;
@@ -92,6 +87,9 @@ footer {
     transform: scaleX(.8);
 }
 
+
+
+/*Tela de Login*/
 .tela_login{
     display: flex;
     flex-direction: column;
