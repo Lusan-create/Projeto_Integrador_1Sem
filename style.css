@@ -10,6 +10,9 @@
 
 body {
     background-color: lightgray;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -22,10 +25,6 @@ header {
     box-shadow: 0 0 10px hsl(0, 0%, 0%);
     background-color: hsl(0, 0%, 15%);
     color: white;
-}
-
-header h1 {
-    font-size: ;
 }
 
 footer {
@@ -89,6 +88,10 @@ footer {
 
 .navbar ul li:hover::after {
     transform: scaleX(.8);
+}
+
+#main_saida_pecas{
+    
 }
 
 main p {
@@ -201,4 +204,133 @@ main p a {
     border-radius: 5px;
     box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
                 -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
+}
+
+/*--------------SEÇÃO DA SAÍDA DE PEÇAS--------------*/
+
+.saida_pecas{    /*CSS da parte do menu de saída de peças*/
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* organiza em coluna */
+    justify-content: space-between; /* joga o retorno lá embaixo */
+    align-items: center; /* centraliza horizontalmente */
+    min-height: 40dvh;
+    height: 100%; /* garante que cresça com o restante da página */
+    background-color: lightgray;
+    padding: 20px;
+
+
+}
+
+.article_pecas{     /*Grid do display de peças*/
+
+        display: flex;
+        gap: 10px; /* Espaço entre os inputs */
+        padding: 20px; /* Opcional: dar uma folga interna */
+        justify-content:flex-start; /* Opcional: centralizar os inputs no meio da página */
+        flex-wrap: wrap; /* Opcional: se não couber tudo na mesma linha, quebra */
+
+}
+
+.article_pecas input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+#cod_produto{
+    width: clamp(100px, 90%, 500px);
+    height: clamp(50px, 5%, 100%);
+    padding: 10px;
+    font-size: clamp(1rem, 2dvh , 2rem);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
+}
+
+#cod_nome{
+    width: clamp(100px, 90%, 500px);
+    height: clamp(50px, 5%, 100%);
+    padding: 10px;
+    font-size: clamp(1rem, 2dvh , 2rem);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
+}
+
+#cod_qtd{
+    width: clamp(100px, 90%, 500px);
+    height: clamp(50px, 5%, 100%);
+    padding: 10px;
+    font-size: clamp(1rem, 2dvh , 2rem);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
+}
+
+#cod_data{
+    width: clamp(100px, 90%, 500px);
+    height: clamp(50px, 5%, 100%);
+    padding: 10px;
+    font-size: clamp(1rem, 2dvh , 2rem);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
+}
+
+#cod_retorno{
+    align-self: center;
+    width: 600px;
+    height: 21dvh;
+    padding: 10px;
+    font-size: clamp(1rem, 2dvh , 2rem);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 80%, 0.3);
+    display: block;
+    padding: 10px;
+    font-size: 16px;   
+}
+
+.botoes_formulario {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 600px; /* mesmo tamanho do input de retorno */
+    margin-top: 20px;
+}
+
+.botoes_formulario button {
+    flex: 1;
+    padding: 15px;
+    font-size: clamp(1rem, 2dvh, 2rem);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.2);
+    transition: background-color 0.2s ease;
+}
+
+#btn_descartar {
+    background-color: hsl(0, 60%, 50%);
+    color: white;
+}
+
+#btn_descartar:hover {
+    background-color: hsl(0, 60%, 40%);
+}
+
+#btn_submeter {
+    background-color: hsl(120, 60%, 40%);
+    color: white;
+}
+
+#btn_submeter:hover {
+    background-color: hsl(120, 60%, 30%);
 }
