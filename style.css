@@ -198,3 +198,25 @@ main p a {
     box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
                 -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
 }
+
+
+/*------------------Tela do catálogo---------------------*/
+
+.main_catalogo{
+    display: flex;
+    flex-direction: column;
+    height: clamp(60dvh, 100dvh, 120dvh);
+    align-items: center;
+}
+
+
+.fundoCatalogo{
+    background-color: hsl(0, 2%, 35%);
+    border-color: hsl(hue, saturation, lightness);
+    width: 90%;
+    height: 150dvh;
+    margin-top: 5dvh;
+    margin-bottom: 5dvh;
+}
+
+
