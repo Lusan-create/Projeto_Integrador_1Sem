@@ -293,6 +293,9 @@ main p a {
 
 
 
+
+
+
 /*-------------------Tela Cadastro---------------------------------*/
 /* Estilo para o formulário com grid */
 .form-grid {
@@ -342,6 +345,11 @@ input, select {
 .form-button:hover {
     background-color: #0056b3;
 }
+
+
+
+
+
 
 
 /*--------------------------------- SEÇÃO DA SAÍDA DE PEÇAS -------------------------------*/
