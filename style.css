@@ -198,6 +198,11 @@ main p a {
                 -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
 }
 
+
+
+
+
+
 /*------------------Tela do catálogo---------------------*/
 
 .main_catalogo{
@@ -242,6 +247,9 @@ main p a {
     border-style: solid;
     box-shadow: 1%;
 }
+
+
+
 
 
 
@@ -294,6 +302,11 @@ input, select {
 .form-button:hover {
     background-color: #0056b3;
 }
+
+
+
+
+
 
 
 /*--------------------------------- SEÇÃO DA SAÍDA DE PEÇAS -------------------------------*/
