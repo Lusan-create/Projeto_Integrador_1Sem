@@ -5,6 +5,9 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    letter-spacing: .8px;
 }
 
 body {
@@ -158,37 +161,38 @@ main p a {
 .tela_menu {
     display: flex;
     flex-direction: column;
-    margin-top: 5dvh;
-    height: clamp(60dvh, 80dvh, 100dvh);
+    height: 100dvh;
+    margin-top: 20px;
     align-items: center;
+    gap: clamp(10px, 5dvh, 50px);
 }
 
-.rastreio h1{
+.rastreio h1, .peças h1, .estoque h1{
     text-align: center;
     margin-bottom: 20px;
     font-size: clamp(1.5rem, 3dvh, 2rem);
 }
 
-.card h1 {
+.card_rastreio h1 {
     font-size: clamp(1rem, 3dvh, 5rem);
     color: white;
+    margin: 0;
     text-align: center;
 }
 
-.card {
+.card_rastreio {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    height: clamp(120px, 30dvw, 300px);
-    width: clamp(100px, 40dvw, 500px);
+    padding: 40px;
     background-color: hsl(0, 0%, 25%);
     border-radius: 10px;
     box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.5);
+    gap: 1.5rem;
 }
 
 #cod_rastreio {
-    width: clamp(100px, 90%, 500px);
+    width: clamp(100px, 40dvw, 500px);
     height: clamp(50px, 5%, 100%);
     padding: 10px;
     font-size: clamp(1rem, 2dvh , 2rem);
@@ -198,9 +202,48 @@ main p a {
                 -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
 }
 
+#bt_card {
+    width: clamp(50px, 80%, 300px);
+    height: clamp(10px, 5dvh, 100px);
+    background-color: hsl(0, 0%, 80%);
+    color: black;
+    font-size: clamp(1rem, 2.5dvh, 2rem);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.7);
+    transition: .3s all ease;
+}
 
+#bt_card:hover {
+    transform: scale(1.05);
+    background-color: hsl(0, 0%, 70%);
+}
 
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    height: clamp(120px, 20dvh, 300px);
+    width: clamp(100px, 40dvw, 500px);
+    background-color: hsl(0, 0%, 25%);
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.5);
+    gap: 20px;
+}
 
+.card h1 {
+    font-size: clamp(1rem, 3dvh, 5rem);
+    color: white;
+    text-align: center;
+}
+
+.grid_peças {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
 
 
 /*------------------Tela do catálogo---------------------*/

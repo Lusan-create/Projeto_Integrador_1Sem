@@ -2,18 +2,19 @@
 <html lang="pt-BR">
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
-    <title>Menu Logistico</title>
+    <title>Ferragens Negrão</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     
 </head>
 <body>
+    <div class="container">
         <header>
             <img src="imgs/logo_empresa.png" alt="Logo Ferragens Negrão" class="logo">
-            <section class="user_login">
+            <div class="user_login">
                 <p>Bem-vindo, Usuário</p>
                 <img src="imgs/user_avatar.png" alt="Foto de perfil do usuário" class="user_pic">
-            </section>
+            </div>
         </header>
         <nav class="navbar">
             <ul>
@@ -22,24 +23,48 @@
                 <li>RASTREIO</li>
                 <li>CATÁLOGO</li>
             </ul>
-        </nav> 
-
+        </nav>
+    </div>    
     <main class="tela_menu">
 
         <article class="rastreio">
             <h1>RASTREIO</h1>
-
-            <section class="card">
-                <h1>Rastreio</h1>
+            <section class="card_rastreio">
+                <h1>Rastreio de produtos</h1>
                 <input type="text" id="cod_rastreio" placeholder="Digite o código de rastreio...">
-
-                <button>
-                    <h1>Rastrear</h1>
-                </button>
+                <button id="bt_card">Rastrear pedido</button> 
             </section>
-
         </article>
 
+        <article class="peças">
+            <h1>PEÇAS</h1>
+            <section class="grid_peças">
+                <section class="card">
+                    <h1>Saída de peças</h1>
+                    <button id="bt_card">Gerir peças</button> 
+                </section>
+                <section class="card">
+                    <h1>Saída de peças</h1>
+                    <button id="bt_card">Gerir peças</button> 
+                </section>
+                <section class="card">
+                    <h1>Saída de peças</h1>
+                    <button id="bt_card">Ver movimentação</button> 
+                </section>
+                <section class="card">
+                    <h1>Saída de peças</h1>
+                    <button id="bt_card">Cadastrar</button> 
+                </section>
+            </section>
+        </article>
+
+        <article class="estoque">
+            <h1>ESTOQUE</h1>
+            <section class="card">
+                <h1>Estoque</h1>
+                <button id="bt_card">Visualizar</button>
+            </section>
+        </article>
     </main>
     <footer></footer>
 </body>
