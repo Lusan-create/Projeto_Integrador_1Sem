@@ -15,6 +15,7 @@
                 <img src="imgs/user_avatar.png" alt="Foto de perfil do usuário" class="user_pic">
             </section>
         </header>
+
         <nav class="navbar">
             <ul>
                 <li>PEÇAS</li>
@@ -24,25 +25,24 @@
             </ul>
         </nav> 
 
-    <main class="tela_menu">
+    <main class="tela_menu" id=mainEstoque>
 
-        <article>
-            <input type="text" placeholder="Código do produto">
-            <p>ENTRADAS E SAÍDAS</p>
-            <section>
-                <ul>
-
-                </ul>
-            </section>
-        </article>
-
-        <article>
-            <input type="text" placeholder="Código do produto">
-            <p>ESTOQUE</p>
-            <section>
+        <article class="caixa01">
+            <input type="text" placeholder="Código do produto" id="estoqueCod01">
+            <p id="estoqueNome01">ENTRADAS E SAÍDAS</p>
+            <section id="out01">
                 <ul></ul>
             </section>
         </article>
+
+        <article class="estoqueArt02">
+            <input type="text" placeholder="Código do produto" id="estoqueCod02">
+            <p id="estoqueNome02">ESTOQUE</p>
+            <section id="out02">
+                <ul></ul>
+            </section>
+        </article>
+
     </main>
     <footer></footer>
 </body>

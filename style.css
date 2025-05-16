@@ -100,7 +100,11 @@ main p a {
     cursor: pointer;
 }
 
-
+main {
+    height: auto;
+    width: 100%;
+    margin-bottom: 20dvh;
+}
 
 
 /*---------------------------------- Tela Index -------------------------------*/
@@ -161,10 +165,11 @@ main p a {
 .tela_menu {
     display: flex;
     flex-direction: column;
-    height: 100dvh;
+    height: auto;
     margin-top: 20px;
     align-items: center;
     gap: clamp(10px, 5dvh, 50px);
+    margin-bottom: 20dvh;
 }
 
 .rastreio h1, .peças h1, .estoque h1{
@@ -492,7 +497,7 @@ input, select {
 
     background-color: silver ;
 }
-.entrada_pecas{    /CSS da parte do menu de entrada de peças/
+.entrada_pecas{    /*CSS da parte do menu de entrada de peças*/
     flex: 1;
     display: flex;
     flex-direction: column; /* organiza em coluna */
@@ -506,180 +511,7 @@ input, select {
 
 }
 
-.article_pecas{ /Grid do display de entrada de peças/
-
-        display: flex;
-        gap: 10px; /* Espaço entre os inputs */
-        padding: 20px; /* Opcional: dar uma folga interna */
-        justify-content:flex-start; /* Opcional: centralizar os inputs no meio da página */
-        flex-direction: column; /* Coloca os campos um abaixo do outro */
-}
-
-.article_pecas input {
-    display: block; /* Coloca os campos um abaixo do outro */
-    width: 100%; /* Define a largura total */
-    height: 40px; /* Altura padrão */
-    margin-bottom: 5px; /* Espaço entre os campos */
-}
-
-#cod_produto{
-    width: clamp(100px, 90%, 500px);
-    height: clamp(50px, 5%, 100%);
-    padding: 10px;
-    font-size: clamp(1rem, 2dvh , 2rem);
-    border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
-                -2px -2px 5px hsla(0, 0%, 80%, 0.3);
-}
-#cod_nome{
-    width: clamp(100px, 90%, 500px);
-    height: clamp(50px, 5%, 100%);
-    padding: 10px;
-    font-size: clamp(1rem, 2dvh , 2rem);
-    border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
-                -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
-}
-
-#cod_qtd{
-    width: clamp(100px, 90%, 500px);
-    height: clamp(50px, 5%, 100%);
-    padding: 10px;
-    font-size: clamp(1rem, 2dvh , 2rem);
-    border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
-                -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
-}
-
-#cod_setor{
-    width: clamp(100px, 90%, 500px);
-    height: clamp(50px, 5%, 100%);
-    padding: 10px;
-    font-size: clamp(1rem, 2dvh , 2rem);
-    border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
-                -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
-}
-#cod_data{
-    width: clamp(100px, 90%, 500px);
-    height: clamp(50px, 5%, 100%);
-    padding: 10px;
-    font-size: clamp(1rem, 2dvh , 2rem);
-    border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
-                -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
-}
-
-#cod_armazenamento{
-    align-self: center;
-    width: 600px;
-    height: 21dvh;
-    padding: 10px;
-    font-size: clamp(1rem, 2dvh , 2rem);
-    border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
-                -2px -2px 5px hsla(0, 0%, 80%, 0.3);
-    display: block;
-    padding: 10px;
-    font-size: 16px;   
-}
-
-#cod_remanufatura{
-    align-self: center;
-    width: 600px;
-    height: 15dvh;
-    padding: 10x;
-    font-size: clamp(1rem, 2dvh , 2rem);
-    border: none;
-    border-radius: 10px;
-    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
-                -2px -2px 5px hsla(0, 0%, 80%, 0.3);
-    display: block;
-    padding: 5px;
-    font-size: 16px; 
-    margin-bottom: 10px; 
-}
-
-#cod_revenda{
-    align-self: center;
-    width: 600px;
-    height: 15dvh;
-    padding: 10x;
-    font-size: clamp(1rem, 2dvh , 2rem);
-    border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
-                -2px -2px 5px hsla(0, 0%, 80%, 0.3);
-    display: block;
-    padding: 10px;
-    font-size: 16px;   
-}
-
-.botoes_formulario {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    width: 600px; /* mesmo tamanho do input de retorno */
-    margin-top: 20px;
-}
-
-.botoes_formulario button {
-    flex: 1;
-    padding: 15px;
-    font-size: clamp(1rem, 2dvh, 2rem);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.2);
-    transition: background-color 0.2s ease;
-}
-
-#btn_descartar {
-    background-color: hsl(0, 60%, 50%);
-    color: white;
-}
-
-#btn_descartar:hover {
-    background-color: hsl(0, 60%, 40%);
-}
-
-#btn_submeter {
-    background-color: hsl(120, 60%, 40%);
-    color: white;
-}
-
-#btn_submeter:hover {
-    background-color: hsl(120, 60%, 30%);
-}
-
-
-/*--------------------------------- SEÇÃO DA ENTRADA DE PEÇAS -------------------------------*/
-
-.article_entrada_principal{
-
-    background-color: silver ;
-}
-.entrada_pecas{    /CSS da parte do menu de entrada de peças/
-    flex: 1;
-    display: flex;
-    flex-direction: column; /* organiza em coluna */
-    justify-content: space-between; /* joga o retorno lá embaixo */
-    align-items: center; /* centraliza horizontalmente */
-    min-height: 40dvh;
-    height: 100%; /* garante que cresça com o restante da página */
-    background-color: lightgray;
-    padding: 20px;
-
-
-}
-
-.article_pecas{ /Grid do display de entrada de peças/
+.article_pecas{ /*Grid do display de entrada de peças*/
 
         display: flex;
         gap: 10px; /* Espaço entre os inputs */
@@ -833,3 +665,116 @@ input, select {
 
 /*-------------------------- Estoque ----------------------------*/
 
+#mainEstoque{
+    height: auto;
+    margin-bottom: 10dvh;
+}
+
+/*Primeiro article do estoque*/rt
+.estoqueArt02{ /*Entrada e saída de peças*/
+    /*Configurações do grid*/
+    display: grid;
+    grid-template-rows: 10%, 90%;
+    grid-template-columns: 1fr,1fr,1fr;
+    grid-template-areas:
+    "codigocx1 vazio nomecx1"
+    "caixa01 caixa01 caixa01";
+
+    /*Configurações de posição*/
+    justify-content: center;
+
+    /*Configurações de tamanho*/
+    width: 100%;
+
+
+}
+#estoqueCod01{
+    /*Config Grid*/
+    grid-area: codigocx1;
+
+    /*Config Tamanho*/
+    width: 100%;
+
+    /*Configs posicionamento*/
+    margin-bottom: 1%;
+}
+
+#estoqueNome01{
+    grid-area: nomecx1;
+    font-size: large;
+
+}
+
+#out01{
+    /*Config Grid*/
+    grid-area: caixa01;
+
+    /*Config posicionamento*/
+    justify-self: center;
+
+    /*Configs tamanho*/
+    width: 60dvw;
+    height: 50dvh;
+
+    /*Configs estilo*/
+    border-style: solid;
+    border-color: rgb(100, 100, 100);
+    background-color: white;
+
+    }
+
+/*Segundo article do estoque*/
+.estoqueArt02{ /*Estoque*/
+
+    /*config grid*/
+    display: grid;
+    grid-template-rows: 10%,90%;
+    grid-template-columns: repeat(1fr, 3);
+    grid-template-areas: 
+    "codigocx2 vaziocx2 nomecx2"
+    "caixa02 caixa02 caixa02";
+
+    /*Configração de posição*/
+    justify-content: center;
+
+    /*configs de tamanho*/
+    width: 100%;
+
+}
+
+#out02{
+    /*Configurações Grid + Posicionamento*/
+    grid-area: caixa02;
+    justify-self: center;
+    
+    
+    /*Configs Tamanho*/
+    width: 60dvw;
+    height: 50dvh;
+
+    /*Configs estilo*/
+    border-style: solid;
+    border-color: rgb(100, 100, 100);
+    background-color: white;
+
+}
+
+#estoqueNome02{
+    /*Config Grid*/
+    grid-area: nomecx2;
+
+    /*Configs de estilo*/
+    font-style:unset;
+    font-size: xx-large;
+}
+
+#estoqueCod02{
+    /*Config grid*/
+    grid-area: codigocx2;
+
+    /*Config de tamanho*/
+    width: 200%;
+
+    /*Configs de posicionamento*/
+    margin-bottom: 1%;
+}
