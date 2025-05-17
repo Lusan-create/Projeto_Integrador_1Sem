@@ -57,19 +57,21 @@ footer {
     align-items: center;
     background-color: hsl(0, 0%, 25%);
     box-shadow: 0 0 10px hsl(0, 0%, 0%);
+    list-style-type: none;
 }
 
-.navbar ul li{
+.navbar ul li a {
     background-color: hsl(0, 0%, 25%);
     color: white;
     padding: clamp(1rem, 2dvh , 2rem);
     font-size: clamp(1rem, 2dvh, 2rem);
     display: inline-block;
     cursor: pointer;
+    text-decoration: none;
     transition: .3s all ease;
 }
 
-.navbar ul li:hover {
+.navbar ul li a:hover {
     padding: clamp(1rem, 1.5dvh , 2rem);
     font-size: clamp(1rem, 2.2dvh, 2rem);
     color: hsla(0, 0%, 100%, 0.5);
