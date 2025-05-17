@@ -41,10 +41,6 @@ footer {
     margin: 10px;
 }
 
-.user_pic{
-    height: clamp(60px, 10dvh, 80px);
-}
-
 .user_login {
     display: flex;
     align-items: center;
@@ -60,6 +56,7 @@ footer {
     justify-content: space-around;
     align-items: center;
     background-color: hsl(0, 0%, 25%);
+    box-shadow: 0 0 10px hsl(0, 0%, 0%);
 }
 
 .navbar ul li{
@@ -69,24 +66,14 @@ footer {
     font-size: clamp(1rem, 2dvh, 2rem);
     display: inline-block;
     cursor: pointer;
-    position: relative;
+    transition: .3s all ease;
 }
 
-.navbar ul li::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 10px;
-    height: 3px;
-    width: 100%;
-    background: lightgray;
-    border-radius: 5px;
-    transform: scaleX(0);
-    transition: transform 0.1s linear;
-}
-
-.navbar ul li:hover::after {
-    transform: scaleX(.8);
+.navbar ul li:hover {
+    padding: clamp(1rem, 1.5dvh , 2rem);
+    font-size: clamp(1rem, 2.2dvh, 2rem);
+    color: hsla(0, 0%, 100%, 0.5);
+    text-shadow: 2px 2px 4px #000000;
 }
 
 main p {
@@ -245,6 +232,12 @@ main {
 }
 
 .grid_peças {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.grid_estoque {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
