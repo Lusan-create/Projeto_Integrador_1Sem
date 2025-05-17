@@ -682,7 +682,7 @@ input, select {
 
 
 /*Primeiro article do estoque*/
-.estoqueArt02{ /*Entrada e saída de peças*/
+.estoqueArt01{ /*Entrada e saída de peças*/
     /*Configurações do grid*/
     display: grid;
     grid-template-rows: 10%, 90%;
@@ -693,6 +693,7 @@ input, select {
 
     /*Configurações de posição*/
     justify-content: center;
+    margin-top: 15dvh;
 
     /*Configurações de tamanho*/
     width: 100%;
@@ -700,19 +701,19 @@ input, select {
 
 }
 #estoqueCod01{
-    /*Config Grid*/
+    /*Config grid*/
     grid-area: codigocx1;
 
-    /*Config Tamanho*/
-    width: 100%;
+    /*Config de tamanho*/
+    width: 35dvw;
+    height: 75%
 
-    /*Configs posicionamento*/
-    margin-bottom: 1%;
+    /*Configs de posicionamento*/
 }
 
 #estoqueNome01{
     grid-area: nomecx1;
-    font-size: large;
+    font-size: 1.5dvw;
 
 }
 
@@ -742,11 +743,12 @@ input, select {
     grid-template-rows: 10%,90%;
     grid-template-columns: repeat(1fr, 3);
     grid-template-areas: 
-    "codigocx2 codigocx2 nomecx2"
+    "codigocx2 vazio nomecx2"
     "caixa02 caixa02 caixa02";
 
     /*Configração de posição*/
     justify-content: center;
+    margin-top: 10dvh;
 
     /*configs de tamanho*/
     width: 100%;
@@ -783,7 +785,7 @@ input, select {
     grid-area: codigocx2;
 
     /*Config de tamanho*/
-    width: clammp(5dvw,10dvw,15dvw);
+    width: 35dvw;
     height: 75%
 
     /*Configs de posicionamento*/
