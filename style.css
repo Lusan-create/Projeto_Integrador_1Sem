@@ -665,12 +665,8 @@ input, select {
 
 /*-------------------------- Estoque ----------------------------*/
 
-#mainEstoque{
-    height: auto;
-    margin-bottom: 10dvh;
-}
 
-/*Primeiro article do estoque*/rt
+/*Primeiro article do estoque*/
 .estoqueArt02{ /*Entrada e saída de peças*/
     /*Configurações do grid*/
     display: grid;
@@ -764,8 +760,7 @@ input, select {
     grid-area: nomecx2;
 
     /*Configs de estilo*/
-    font-style:unset;
-    font-size: xx-large;
+    font-size: 1.5dvw;
 }
 
 #estoqueCod02{
@@ -773,8 +768,10 @@ input, select {
     grid-area: codigocx2;
 
     /*Config de tamanho*/
-    width: 200%;
+    width: clammp(50%,150%,150%);
+    height: 75%
 
     /*Configs de posicionamento*/
-    margin-bottom: 1%;
+    
+    
 }
