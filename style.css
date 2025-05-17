@@ -76,7 +76,7 @@ footer {
     text-shadow: 2px 2px 4px #000000;
 }
 
-.container {
+.sombra_navbar {
     filter: drop-shadow(0 0 10px hsl(0, 0%, 0%));
 }
 
