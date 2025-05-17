@@ -276,8 +276,8 @@ main {
 
 .fundoCatalogo{
     grid-area: catalogo;
-    background-color: hsl(0, 2%, 35%);
-    border-color: hsl(hue, saturation, lightness);
+    background-color: white;
+    border-color: silver;
     width: 90%;
     height: 90%;
     margin-top: 2%;
@@ -720,7 +720,7 @@ input, select {
     grid-template-rows: 10%,90%;
     grid-template-columns: repeat(1fr, 3);
     grid-template-areas: 
-    "codigocx2 vaziocx2 nomecx2"
+    "codigocx2 codigocx2 nomecx2"
     "caixa02 caixa02 caixa02";
 
     /*Configração de posição*/
@@ -761,7 +761,7 @@ input, select {
     grid-area: codigocx2;
 
     /*Config de tamanho*/
-    width: clammp(50%,150%,150%);
+    width: clammp(5dvw,10dvw,15dvw);
     height: 75%
 
     /*Configs de posicionamento*/
