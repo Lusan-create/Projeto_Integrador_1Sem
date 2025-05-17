@@ -254,6 +254,7 @@ main {
 /*------------------Tela do catálogo---------------------*/
 
 .main_catalogo{
+    /*Config Grid*/
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: 1fr, 50fr, 49fr;
@@ -262,38 +263,57 @@ main {
     "catalogo catalogo catalogo"
     "catalogo catalogo catalogo"
     "catalogo catalogo catalogo";
+
+    /*Config Tamanho*/
     height: clamp(60dvh, 100dvh, 120dvh);
+
+    /*Config posicionamento*/
     align-items: center;
 }
 
 #inputCatalogo01{
+    /*Config Grid*/
     grid-area: nome;
+
+    /*Config de posicionamento*/
     margin: 0%;
-    height: 20%;
-    width: 90%;
     margin-left: 7.4%;
     margin-right: 0%;
+
+    /*Config de tamanho*/
+    height: 20%;
+    width: 90%;
+
 }
 #inputCatalogo02{
+    /*Configurações Grid*/
     grid-area: produto;
+
+    /*Configurações de tamanho*/
     width: 85%;
     height: 20%;
+
+    /*Configurações de posicionamento*/
     margin-right: 100%;
 }
 
 .fundoCatalogo{
+    /*Configurações Grid*/
     grid-area: catalogo;
-    background-color: hsl(0, 2%, 35%);
-    border-color: hsl(hue, saturation, lightness);
+
+    /*Configurações de tamanho*/
     width: 90%;
     height: 90%;
     margin-top: 2%;
     margin-bottom: 23dvh;
     margin-right: 5%;
     margin-left: 5%;
-    border-color: hsl(0, 2%, 11%);
-    border-style: solid;
     box-shadow: 1%;
+
+    /*Configurações de estilo*/
+    border-style: solid;
+    background-color: white;
+    border-color: rgb(100, 100, 100);
 }
 
 
@@ -665,12 +685,8 @@ input, select {
 
 /*-------------------------- Estoque ----------------------------*/
 
-#mainEstoque{
-    height: auto;
-    margin-bottom: 10dvh;
-}
 
-/*Primeiro article do estoque*/rt
+/*Primeiro article do estoque*/
 .estoqueArt02{ /*Entrada e saída de peças*/
     /*Configurações do grid*/
     display: grid;
@@ -731,7 +747,7 @@ input, select {
     grid-template-rows: 10%,90%;
     grid-template-columns: repeat(1fr, 3);
     grid-template-areas: 
-    "codigocx2 vaziocx2 nomecx2"
+    "codigocx2 codigocx2 nomecx2"
     "caixa02 caixa02 caixa02";
 
     /*Configração de posição*/
@@ -764,8 +780,7 @@ input, select {
     grid-area: nomecx2;
 
     /*Configs de estilo*/
-    font-style:unset;
-    font-size: xx-large;
+    font-size: 1.5dvw;
 }
 
 #estoqueCod02{
@@ -773,8 +788,10 @@ input, select {
     grid-area: codigocx2;
 
     /*Config de tamanho*/
-    width: 200%;
+    width: clammp(5dvw,10dvw,15dvw);
+    height: 75%
 
     /*Configs de posicionamento*/
-    margin-bottom: 1%;
+    
+    
 }
