@@ -1,14 +1,8 @@
 /*----------------------------------- Temp --------------------------------*/
-function armazenamento(){
-    user = localStorage.getItem("user")
-    if(user == "Admin"){
 
-    }
-    else if(user == "Visitante"){
-        user = "Visitante"
-        document.getElementById("username").innerText = "Visitante"
-    }
-}
+
+
+
 
 
 /*----------------------------- página Index.html ----------------------------*/
@@ -46,6 +40,20 @@ function Visitante(){
     localStorage.setItem('user', user)
 }
 /*----------------------------- Página Menu.html --------------------------------- */
+
+/* Validação do Usuário. */
+function armazenamento(){
+    user = localStorage.getItem("user")
+    if(user == "Admin"){
+
+    }
+    else if(user == "Visitante"){
+        user = "Visitante"
+        document.getElementById("username").innerText = "Visitante"
+    }
+}
+
+
 
 /* Rastreio */
 function faz_rastreio(){
