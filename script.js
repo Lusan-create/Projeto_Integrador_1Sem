@@ -1,26 +1,50 @@
-/*----------------------------------- Funções --------------------------------*/
+/*----------------------------------- Temp --------------------------------*/
+function armazenamento(){
+    user = localStorage.getItem("user")
+    if(user == "Admin"){
 
+    }
+    else if(user == "Visitante"){
+        user = "Visitante"
+        document.getElementById("username").innerText = "Visitante"
+    }
+}
 
 
 /*----------------------------- página Index.html ----------------------------*/
-let user = "visitante"
-let login;
-let senha;
+var user
+
+function inicio(){
+    user = 'Visitante'
+}
 
     /*Login*/
-function login_index(user){
+function login_index(){
+
+    var user;
+    let login;
+    let senha;
+
     login = document.getElementById("login").value;
     senha = document.getElementById("senha").value;
 
     if (login == "Admin"  && senha == "1234"){
+        user =  "Admin";
+        alert(user);
+        localStorage.setItem('user', user)
         window.location.href = "menu.html";
-        user = "Admin"
+
     } 
     else{
         alert("Login ou senha são inválidos");
     } 
-    }
+}
 
+
+function Visitante(){
+    user = "Visitante"
+    localStorage.setItem('user', user)
+}
 /*----------------------------- Página Menu.html --------------------------------- */
 
 /* Rastreio */
@@ -32,19 +56,22 @@ function faz_rastreio(){
 
 /*Saída de peças */
 
-function ir_saida_pecas(user){
-    alert("1");
+function ir_saida_pecas(){
+    var user = localStorage.getItem("user")
+
     if (user == "Admin"){
         window.location.href = "saida_pecas.html";
     }
-    else(
+    else{
         alert("Você não possui permissão para acessar a saída de peças")
-    )
+
+    }
     };
 
 /*Entrada de Peças*/
-function ir_entrar_pecas(user){
-    alert(1);
+function ir_entrar_pecas(){
+    var user = localStorage.getItem("user")
+
     if(user == "Admin"){
     window.location.href = "entrada_pecas.html";
     }
@@ -52,13 +79,14 @@ function ir_entrar_pecas(user){
     };
 
 /*Relatório*/
-function gera_relatorio(user){
+function gera_relatorio(){
     alert('Relatório ainda não foi implementado.')
 }
 
 /* Cadastro de peças */
-function ir_cadastro_pecas(user){
-    alert(1);
+function ir_cadastro_pecas(){
+    var user = localStorage.getItem("user")
+
     if(user == 'Admin'){
         window.location.href = "cadastro.html"
     }
@@ -67,15 +95,13 @@ function ir_cadastro_pecas(user){
 
 /* Estoque */
 
-function ir_estoque(user){
-    alert("1");
+function ir_estoque(){
     window.location.href = "estoque.html";
 
     };
 
 /* Catalogo */
 
-function ir_catalogo(user){
-    alert("1");
+function ir_catalogo(){
     window.location.href = "catalogo.html";
     };

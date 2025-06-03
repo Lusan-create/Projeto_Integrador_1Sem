@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <script src="script.js"></script>
 </head>
-<body>
+<body onload="inicio()">
     <header class="header_index">
         <img src="imgs/logo_empresa.png" alt="Logo Ferragens Negrão" class="logo">
     </header>
@@ -17,7 +17,7 @@
         <input type="password" id="senha" placeholder="Escreva a senha...">
         <button id="bt_login" onclick="login_index(user)">LOGIN</button>
         <p><a href="#">Esqueci a senha</a></p>
-        <p><a href="#">Entre como visitante</a></p>
+        <p><a href="menu.html" onclick="Visitante()">Entre como visitante</a></p>
     </main>
     
     <footer></footer>
