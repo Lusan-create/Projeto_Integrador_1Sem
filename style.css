@@ -309,6 +309,7 @@ main {
     margin-right: 5%;
     margin-left: 5%;
     box-shadow: 1%;
+    padding: 1%;
 
     /*Configurações de estilo*/
     border-style: solid;
@@ -316,6 +317,17 @@ main {
     border-color: rgb(100, 100, 100);
 }
 
+#catalogo_out ul {
+    font-size: 1.2dvw;
+    margin-top: 1.5dvh;
+
+    border-style:       none;
+    border-bottom:      100%;
+
+    border-left:       white;
+    border-top:        white;
+    border-right:      white;
+}
 
 
 
@@ -515,7 +527,10 @@ input, select {
 
 .article_entrada_principal{
 
-    background-color: silver ;
+    width: 90%;
+    height: 100dvh;
+    align-content: center;
+    justify-content: center;
 }
 .entrada_pecas{    /*CSS da parte do menu de entrada de peças*/
     flex: 1;
@@ -537,7 +552,10 @@ input, select {
         gap: 10px; /* Espaço entre os inputs */
         padding: 20px; /* Opcional: dar uma folga interna */
         justify-content:flex-start; /* Opcional: centralizar os inputs no meio da página */
+        align-content: center;
+        justify-content: center;
         flex-direction: column; /* Coloca os campos um abaixo do outro */
+        width: 100%;
 }
 
 .article_pecas input {
@@ -615,43 +633,14 @@ input, select {
     font-size: 16px;   
 }
 
-#cod_remanufatura{
-    align-self: center;
-    width: 600px;
-    height: 15dvh;
-    padding: 10x;
-    font-size: clamp(1rem, 2dvh , 2rem);
-    border: none;
-    border-radius: 10px;
-    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
-                -2px -2px 5px hsla(0, 0%, 80%, 0.3);
-    display: block;
-    padding: 5px;
-    font-size: 16px; 
-    margin-bottom: 10px; 
-}
-
-#cod_revenda{
-    align-self: center;
-    width: 600px;
-    height: 15dvh;
-    padding: 10x;
-    font-size: clamp(1rem, 2dvh , 2rem);
-    border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
-                -2px -2px 5px hsla(0, 0%, 80%, 0.3);
-    display: block;
-    padding: 10px;
-    font-size: 16px;   
-}
-
 .botoes_formulario {
     display: flex;
     justify-content: space-between;
     gap: 20px;
     width: 600px; /* mesmo tamanho do input de retorno */
     margin-top: 20px;
+    justify-self: center;
+    align-self: center;
 }
 
 .botoes_formulario button {
@@ -681,6 +670,22 @@ input, select {
 
 #btn_submeter:hover {
     background-color: hsl(120, 60%, 30%);
+}
+
+#entrada_out{
+    width: 50dvw;
+    height: 50dvh;
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    align-self: center;
+    justify-self: center;
+}
+
+#entrada_input{
+    width: 100%;
+    justify-items: center;
+    align-items: center;
 }
 
 /*-------------------------- Estoque ----------------------------*/

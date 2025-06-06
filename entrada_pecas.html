@@ -7,38 +7,53 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="inicio_entrada()">
     <section class="sombra_navbar">
         <header>
-            <img src="imgs/logo_empresa.png" alt="Logo Ferragens Negrão" class="logo">
+            <a href="menu.html">
+            <img src="imgs/logo_empresa.png" alt="Logo Ferragens Negrão" class="logo" >
+            </a>
             <section class="user_login">
                 <p>Admin</p>
             </section>
         </header>
         <nav class="navbar">
             <ul>
-                <li><a href="#">PEÇAS</a></li>
-                <li><a href="#">ESTOQUE</a></li>
-                <li><a href="#">RASTREIO</a></li>
-                <li><a href="#">CATÁLOGO</a></li>
+                <li><a href="menu.html">PEÇAS</a></li>
+                <li><a href="estoque.html">ESTOQUE</a></li>
+                <li><a href="menu.html">RASTREIO</a></li>
+                <li><a href="catalogo.html">CATÁLOGO</a></li>
             </ul>
         </nav>
     </section> 
     
     <main class="entrada_pecas">
+        <h1>Entrada de peças</h1>
         <article class="article_entrada_principal">
             <section class="article_pecas">
-                <input type="text" id="cod_produto" placeholder="Digite o código do produto...">
-                <input type="text" id="cod_nome" placeholder="Nome...">
-                <input type="text" id="cod_qtd" placeholder="Quantidade...">
-                <input type="text" id="cod_setor" placeholder="Setor (armazenamento)...">
-                <input type="text" id="cod_data" placeholder="Data...">
+
+                <section class="form-group" id="entrada_input">
+                    <label for="cod_produto" class="form-label">Código do produto</label>
+                    <input type="text" id="cod_produto" placeholder="Digite o código do produto...">
+                </section>
+
+                <section class="form-group" id="entrada_input">
+                    <label for="cod_qtd" class="form-label"> Quantidade de embalagens</label>
+                    <input type="text" id="cod_qtd" placeholder="Quantidade...">
+                </section>
+
+                <section class="form-group" id="entrada_input">
+                    <label for="cod_setor" class="form-label">Local de armazenamento</label>
+                    <input type="text" id="cod_setor" placeholder="Setor (armazenamento)...">
+                </section>
             </section>
 
-                <input type="text" id="cod_remanufatura" placeholder="REMANUFATURA">
-                <input type="text" id="cod_revenda" placeholder="REVENDA">
+            <section id="entrada_out">
+
+            </section>
+
             <section class="botoes_formulario">
-                <button id="btn_submeter">SUBMETER</button>
+                <button id="btn_submeter" onclick="submete_entrada()">SUBMETER</button>
                 <button id="btn_descartar">DESCARTAR FORMULÁRIO</button>
             </section>
         </article>
