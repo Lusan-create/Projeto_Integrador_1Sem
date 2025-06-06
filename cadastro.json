@@ -1,0 +1,44 @@
+{
+    "catalogo": [
+        {
+            "codigo": "001",
+            "nome": "Produto 01",
+            "marca": "Marca 01",
+            "categoria": "Abrasivos",
+            "quantidade": "10",
+            "preco": "98.90"
+        },
+        {
+            "codigo": "002",
+            "nome": "Produto 02",
+            "marca": "Marca 02",
+            "categoria": "Hidráulica",
+            "quantidade": "5",
+            "preco": "12.55"
+        },
+        {
+            "codigo": "003",
+            "nome": "Produto 03",
+            "marca": "Marca 03",
+            "categoria": "Elétrica",
+            "quantidade": "2",
+            "preco": "500.00"
+        },
+        {
+            "codigo": "004",
+            "nome": "Produto 04",
+            "marca": "Marca 04",
+            "categoria": "Pintura",
+            "quantidade": "4",
+            "preco": "75.90"
+        },
+        {
+            "codigo": "005",
+            "nome": "Produto 05",
+            "marca": "Marca 05",
+            "categoria": "Abrasivos",
+            "quantidade": "20",
+            "preco": "50.50"
+        }
+    ]
+}
