@@ -1,15 +1,7 @@
+
 /*----------------------------------- Temp --------------------------------*/
 
-let movimento = {
-    codigo :        [],
-    mes :           [],
-    dia:            [],
-    quantidade :    [],
-    setor:          [],
-    inout:          [],
-}
-
-function inicio_entrada(){  /* Inicia ao carregar a página e Checa se há algo no local storage. Caso possua alguma informação, ele puxa o local storage. */
+function inicio_saida(){  /* Inicia ao carregar a página e Checa se há algo no local storage. Caso possua alguma informação, ele puxa o local storage. */
     let teste = JSON.parse(localStorage.getItem('movimento'))
     if (movimento.codigo.length == 0 && teste !== null && teste.codigo !== undefined){
         movimento = JSON.parse(localStorage.getItem("movimento"))
@@ -23,9 +15,13 @@ function inicio_entrada(){  /* Inicia ao carregar a página e Checa se há algo 
 
         console.log(pecas)
     }
+
+    
+    
 };
 
-function submete_entrada(){
+
+function submete_saida(){
 
     let x = movimento.codigo.length
     for (let i = 0; i < pecas.codigo.length; i++){
@@ -51,12 +47,18 @@ function submete_entrada(){
             let setor = document.getElementById("cod_setor").value
             movimento.setor.push(setor)
             
-            /* demonstra que é uma entrada */
-            let entrada = 'in'
-            movimento.inout.push(entrada)
+            /* demonstra que é uma saida */
+            let saida = 'out'
+            movimento.inout.push(saida)
 
             /* Armazena as informações atualizadas no local storage */
-            localStorage.setItem("movimento", JSON.stringify(movimento))
+            /*localStorage.setItem("movimento", JSON.stringify(movimento))*/
+
+            
+            const li = document.getElementById("saida_out")
+            const ul = document.createElement("ul");
+            ul.textContent = `Código:${codigo} -- Quantidade:${quantidade} -- Data:${data.getDate()}/${data.getMonth()} -- Setor:${setor}`;
+            li.appendChild(ul);
 
             /* retorna a lista e avisa que entrada foi realizada */
             console.log(movimento)
@@ -66,9 +68,26 @@ function submete_entrada(){
     if (movimento.codigo.length == x){
         alert("Código não encontrado")
     }
+}    
+/* -------------------------------- Variaveis ------------------------------------- */
+
+let movimento = { /* Objeto de movimentacões */
+    codigo :        [],
+    mes :           [],
+    dia:            [],
+    quantidade :    [],
+    setor:          [],
+    inout:          [],
 }
 
-
+let pecas = { /* Objeto na qual as informações do cadastro serão armazenadas */
+    codigo : [],
+    nome : [],
+    marca : [],
+    categoria : [],
+    quantidade : [],
+    preco : [],
+}
 
 /*----------------------------- página Index.html ----------------------------*/
 let user /* Tipo de usuário (Admin ou Visitante) */
@@ -137,6 +156,7 @@ function ir_saida_pecas(){
     };
 
 /*------------------------------------------ Entrada de Peças ------------------------------------------------- */
+
 function ir_entrar_pecas(){
     var user = localStorage.getItem("user")
 
@@ -147,12 +167,77 @@ function ir_entrar_pecas(){
     };
 
 
+function inicio_entrada(){  /* Inicia ao carregar a página e Checa se há algo no local storage. Caso possua alguma informação, ele puxa o local storage. */
+    let teste = JSON.parse(localStorage.getItem('movimento'))
+    if (movimento.codigo.length == 0 && teste !== null && teste.codigo !== undefined){
+        movimento = JSON.parse(localStorage.getItem("movimento"))
+
+        console.log(movimento)
+    }
+
+    teste = JSON.parse(localStorage.getItem('cadastro'))
+    if (pecas.codigo.length == 0 && teste !== null && teste.codigo !== undefined){
+        pecas = JSON.parse(localStorage.getItem('cadastro'))
+
+        console.log(pecas)
+    }
+};
+
+function submete_entrada(){
+
+    let x = movimento.codigo.length
+    for (let i = 0; i < pecas.codigo.length; i++){
+
+        if (pecas.codigo[i] == document.getElementById("cod_produto").value){
+
+            /* Entrada do código */
+            let codigo = pecas.codigo[i]
+            movimento.codigo.push(codigo)
+
+            /* Quantidade de embalagens */
+            let quantidade = document.getElementById("cod_qtd").value
+            movimento.quantidade.push(quantidade)
+
+            /* Pega a data diretamente do navegador (Dia e Mês) */
+            data = new Date()
+            data.toLocaleDateString('pt-BR')
+            let mes = String(data.getMonth())
+            movimento.mes.push(data.getMonth())
+            movimento.dia.push(data.getDate())
+
+            /* Local de armazenamento */
+            let setor = document.getElementById("cod_setor").value
+            movimento.setor.push(setor)
+            
+            /* demonstra que é uma entrada */
+            let entrada = 'in'
+            movimento.inout.push(entrada)
+
+            /* Armazena as informações atualizadas no local storage */
+            localStorage.setItem("movimento", JSON.stringify(movimento))
+
+            /* retorna a lista e avisa que entrada foi realizada */
+            console.log(movimento)
+            alert("Entrada Realizada")
+        }
+    };
+    if (movimento.codigo.length == x){
+        alert("Código não encontrado")
+    }
+}    
 
 
-/*Relatório*/
+
+
+
+/*--------------------------------------------- Relatório ------------------------------------------------*/
 function gera_relatorio(){
     alert('Relatório ainda não foi implementado.')
 }
+
+
+
+
 
 /* -------------------------------------------- Cadastro de peças ------------------------------------------------------- */
 function ir_cadastro_pecas(){  /* Função para entrada no cadastro.html (Checa se é Admin) */
@@ -228,14 +313,7 @@ function cadastro_peca(){ /* Realiza o cadastro de peças puxando as informaçõ
 
 }
 
-let pecas = { /* Objeto na qual as informações serão armazenadas */
-    codigo : [],
-    nome : [],
-    marca : [],
-    categoria : [],
-    quantidade : [],
-    preco : [],
-}
+
     /* Possiveis melhorias: Checar se a informação está duplicada, Ver se algum campo está vazio e retornar um erro caso esteja */
 
 /* Estoque */

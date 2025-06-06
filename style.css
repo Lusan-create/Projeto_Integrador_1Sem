@@ -393,7 +393,7 @@ input, select {
 
 .article_saida_principal{
 
-    background-color: silver ;
+    width: 90%;
 }
 .saida_pecas{    /*CSS da parte do menu de saída de peças*/
     flex: 1;
@@ -425,6 +425,10 @@ input, select {
     border: 1px solid #ccc;
     font-size: 16px;
   }
+
+.saida_pecas h1 {
+    margin-bottom: 3dvh;
+}
 
 #cod_produto{
     width: clamp(100px, 90%, 500px);
@@ -522,6 +526,25 @@ input, select {
     background-color: hsl(120, 60%, 30%);
 }
 
+.saida_input{
+    width: 60%;
+
+
+
+    justify-items: center;
+}
+
+.saida_out{
+    margin-top: 2dvh;
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+
+    height: 50dvh;
+    width:  50dvw;
+
+    justify-self: center;
+}
 
 /*--------------------------------- SEÇÃO DA ENTRADA DE PEÇAS -------------------------------*/
 
