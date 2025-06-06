@@ -542,6 +542,7 @@ input, select {
 
     height: 50dvh;
     width:  50dvw;
+    padding: 1%;
 
     justify-self: center;
 }
@@ -698,9 +699,12 @@ input, select {
 #entrada_out{
     width: 50dvw;
     height: 50dvh;
+    padding: 1%;
+
     background-color: white;
     border-style: solid;
     border-color: black;
+
     align-self: center;
     justify-self: center;
 }

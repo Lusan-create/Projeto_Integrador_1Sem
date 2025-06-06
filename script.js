@@ -1,74 +1,22 @@
 
 /*----------------------------------- Temp --------------------------------*/
 
-function inicio_saida(){  /* Inicia ao carregar a página e Checa se há algo no local storage. Caso possua alguma informação, ele puxa o local storage. */
-    let teste = JSON.parse(localStorage.getItem('movimento'))
-    if (movimento.codigo.length == 0 && teste !== null && teste.codigo !== undefined){
-        movimento = JSON.parse(localStorage.getItem("movimento"))
 
-        console.log(movimento)
-    }
+function carrega_json(){
+fetch('cadastro.json')
+for (let i = 0; 4; i++){
+    let temp = json.catalogo[0]
+    console.log(temp)
 
-    teste = JSON.parse(localStorage.getItem('cadastro'))
-    if (pecas.codigo.length == 0 && teste !== null && teste.codigo !== undefined){
-        pecas = JSON.parse(localStorage.getItem('cadastro'))
-
-        console.log(pecas)
-    }
+    codigo = temp.codigo
+    pecas.codigo.push(codigo)
 
     
-    
+    }
 };
 
 
-function submete_saida(){
 
-    let x = movimento.codigo.length
-    for (let i = 0; i < pecas.codigo.length; i++){
-
-        if (pecas.codigo[i] == document.getElementById("cod_produto").value){
-
-            /* Entrada do código */
-            let codigo = pecas.codigo[i]
-            movimento.codigo.push(codigo)
-
-            /* Quantidade de embalagens */
-            let quantidade = document.getElementById("cod_qtd").value
-            movimento.quantidade.push(quantidade)
-
-            /* Pega a data diretamente do navegador (Dia e Mês) */
-            data = new Date()
-            data.toLocaleDateString('pt-BR')
-            let mes = String(data.getMonth())
-            movimento.mes.push(data.getMonth())
-            movimento.dia.push(data.getDate())
-
-            /* Local de armazenamento */
-            let setor = document.getElementById("cod_setor").value
-            movimento.setor.push(setor)
-            
-            /* demonstra que é uma saida */
-            let saida = 'out'
-            movimento.inout.push(saida)
-
-            /* Armazena as informações atualizadas no local storage */
-            /*localStorage.setItem("movimento", JSON.stringify(movimento))*/
-
-            
-            const li = document.getElementById("saida_out")
-            const ul = document.createElement("ul");
-            ul.textContent = `Código:${codigo} -- Quantidade:${quantidade} -- Data:${data.getDate()}/${data.getMonth()} -- Setor:${setor}`;
-            li.appendChild(ul);
-
-            /* retorna a lista e avisa que entrada foi realizada */
-            console.log(movimento)
-            alert("Entrada Realizada")
-        }
-    };
-    if (movimento.codigo.length == x){
-        alert("Código não encontrado")
-    }
-}    
 /* -------------------------------- Variaveis ------------------------------------- */
 
 let movimento = { /* Objeto de movimentacões */
@@ -141,7 +89,7 @@ function faz_rastreio(){
     alert('O rastreio de peças não está implementado')
 }
 
-/*Saída de peças */
+/* --------------------------------------------------------Saída de peças -------------------------------------------------- */
 
 function ir_saida_pecas(){
     var user = localStorage.getItem("user")
@@ -154,6 +102,75 @@ function ir_saida_pecas(){
 
     }
     };
+
+    function inicio_saida(){  /* Inicia ao carregar a página e Checa se há algo no local storage. Caso possua alguma informação, ele puxa o local storage. */
+    let teste = JSON.parse(localStorage.getItem('movimento'))
+    if (movimento.codigo.length == 0 && teste !== null && teste.codigo !== undefined){
+        movimento = JSON.parse(localStorage.getItem("movimento"))
+
+        console.log(movimento)
+    }
+
+    teste = JSON.parse(localStorage.getItem('cadastro'))
+    if (pecas.codigo.length == 0 && teste !== null && teste.codigo !== undefined){
+        pecas = JSON.parse(localStorage.getItem('cadastro'))
+
+        console.log(pecas)
+    }
+
+    
+    
+};
+
+
+function submete_saida(){
+
+    let x = movimento.codigo.length
+    for (let i = 0; i < pecas.codigo.length; i++){
+
+        if (pecas.codigo[i] == document.getElementById("cod_produto").value){
+
+            /* Entrada do código */
+            let codigo = pecas.codigo[i]
+            movimento.codigo.push(codigo)
+
+            /* Quantidade de embalagens */
+            let quantidade = document.getElementById("cod_qtd").value
+            movimento.quantidade.push(quantidade)
+
+            /* Pega a data diretamente do navegador (Dia e Mês) */
+            data = new Date()
+            data.toLocaleDateString('pt-BR')
+            let mes = String(data.getMonth())
+            movimento.mes.push(data.getMonth())
+            movimento.dia.push(data.getDate())
+
+            /* Local de armazenamento */
+            let setor = document.getElementById("cod_setor").value
+            movimento.setor.push(setor)
+            
+            /* demonstra que é uma saida */
+            let saida = 'out'
+            movimento.inout.push(saida)
+
+            /* Armazena as informações atualizadas no local storage */
+            /*localStorage.setItem("movimento", JSON.stringify(movimento))*/
+
+            
+            const li = document.getElementById("saida_out")
+            const ul = document.createElement("ul");
+            ul.textContent = `Código:${codigo} -- Quantidade:${quantidade} -- Data:${data.getDate()}/${data.getMonth()} -- Setor:${setor}`;
+            li.appendChild(ul);
+
+            /* retorna a lista e avisa que entrada foi realizada */
+            console.log(movimento)
+            alert("Entrada Realizada")
+        }
+    };
+    if (movimento.codigo.length == x){
+        alert("Código não encontrado")
+    }
+}    
 
 /*------------------------------------------ Entrada de Peças ------------------------------------------------- */
 
@@ -201,7 +218,8 @@ function submete_entrada(){
             /* Pega a data diretamente do navegador (Dia e Mês) */
             data = new Date()
             data.toLocaleDateString('pt-BR')
-            let mes = String(data.getMonth())
+            mes = String(data.getMonth()).padStart(2, '0')
+            dia = String(data.getDate()).padStart(2, '0')
             movimento.mes.push(data.getMonth())
             movimento.dia.push(data.getDate())
 
@@ -215,6 +233,11 @@ function submete_entrada(){
 
             /* Armazena as informações atualizadas no local storage */
             localStorage.setItem("movimento", JSON.stringify(movimento))
+
+            const li = document.getElementById("entrada_out")
+            const ul = document.createElement("ul");
+            ul.textContent = `- Código:${codigo} -- Quantidade:${quantidade} -- Data:${dia}/${mes} -- Setor:${setor}`;
+            li.appendChild(ul);
 
             /* retorna a lista e avisa que entrada foi realizada */
             console.log(movimento)
@@ -231,6 +254,7 @@ function submete_entrada(){
 
 
 /*--------------------------------------------- Relatório ------------------------------------------------*/
+
 function gera_relatorio(){
     alert('Relatório ainda não foi implementado.')
 }
@@ -240,6 +264,7 @@ function gera_relatorio(){
 
 
 /* -------------------------------------------- Cadastro de peças ------------------------------------------------------- */
+
 function ir_cadastro_pecas(){  /* Função para entrada no cadastro.html (Checa se é Admin) */
     var user = localStorage.getItem("user")
 
@@ -316,7 +341,8 @@ function cadastro_peca(){ /* Realiza o cadastro de peças puxando as informaçõ
 
     /* Possiveis melhorias: Checar se a informação está duplicada, Ver se algum campo está vazio e retornar um erro caso esteja */
 
-/* Estoque */
+
+/* ---------------------------------------------------- Estoque --------------------------------------------------------- */
 
 function ir_estoque(){
     window.location.href = "estoque.html";
