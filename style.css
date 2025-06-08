@@ -152,8 +152,58 @@ main {
 }
 
 
+/*--------------------- Tela Menu com Bootstrap ---------------------*/
 
+.body_bootstrap {
+    background-color: lightgray;
+}
 
+.class_bootstrap {
+    align-items: center;
+    justify-content: center;
+    width: 30dvw;
+    margin-top: 5dvh;
+}
+
+.btn_bootstrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100dvw;
+    margin-top: 2dvh;
+}
+
+.link_bootstrap {
+    display: grid;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.link_bootstrap p {
+    font-size: clamp(1.2rem, 1.5dvh, 2rem);
+    margin: 10px 0;
+}
+
+#usuario_bootstrap {
+    padding: clamp(10px, .8dvh, 15px) clamp(10px, 1.5dvw, 20px);
+    font-size: clamp(1.1rem, 2.5dvh, 3rem);
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 10px hsla(0, 0%, 100%, 0.5);
+}
+
+#senha_bootstrap {
+    padding: clamp(10px, .8dvh, 15px) clamp(10px, 1.5dvw, 20px);
+    font-size: clamp(1.1rem, 2.5dvh, 3rem);
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 10px hsla(0, 0%, 100%, 0.5);
+}
 
 /*------------------------------------- Tela Menu -------------------------------------------*/
 

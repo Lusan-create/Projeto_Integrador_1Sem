@@ -99,8 +99,8 @@ function login_index(){
     let login;
     let senha;
 
-    login = document.getElementById("login").value;
-    senha = document.getElementById("senha").value;
+    login = document.getElementById("usuario_bootstrap").value;
+    senha = document.getElementById("senha_bootstrap").value;
 
     if (login == "Admin"  && senha == "1234"){
         user =  "Admin";
