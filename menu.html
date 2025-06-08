@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <script src="script.js"></script>
+    <script>src='cadastro.json'</script>
 </head>
 <body onload="armazenamento()">
     <section class="sombra_navbar">
@@ -26,7 +27,7 @@
             </ul>
         </nav>
     </section>    
-    <main class="tela_menu">
+    <main class="tela_menu" onload="carregar_dados()">
 
         <article class="rastreio">
             <h1>RASTREIO</h1>

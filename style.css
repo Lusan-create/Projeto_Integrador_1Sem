@@ -592,6 +592,7 @@ input, select {
 
     height: 50dvh;
     width:  50dvw;
+    padding: 1%;
 
     justify-self: center;
 }
@@ -748,9 +749,12 @@ input, select {
 #entrada_out{
     width: 50dvw;
     height: 50dvh;
+    padding: 1%;
+
     background-color: white;
     border-style: solid;
     border-color: black;
+
     align-self: center;
     justify-self: center;
 }
@@ -760,6 +764,8 @@ input, select {
     justify-items: center;
     align-items: center;
 }
+
+
 
 /*-------------------------- Estoque ----------------------------*/
 
@@ -800,12 +806,14 @@ input, select {
 
 }
 
-#out01{
+#estoque_out01{
     /*Config Grid*/
     grid-area: caixa01;
+    
 
     /*Config posicionamento*/
     justify-self: center;
+    padding-left: 1%;
 
     /*Configs tamanho*/
     width: 60dvw;
@@ -817,6 +825,11 @@ input, select {
     background-color: white;
 
     }
+
+#estoque_out01 ul {
+    font-size: 110%;
+    margin-top: 1dvh;
+}
 
 /*Segundo article do estoque*/
 .estoqueArt02{ /*Estoque*/
@@ -831,14 +844,14 @@ input, select {
 
     /*Configração de posição*/
     justify-content: center;
-    margin-top: 10dvh;
+    margin-top: 5dvh;
 
     /*configs de tamanho*/
     width: 100%;
 
 }
 
-#out02{
+#estoque_out02{
     /*Configurações Grid + Posicionamento*/
     grid-area: caixa02;
     justify-self: center;
@@ -847,6 +860,7 @@ input, select {
     /*Configs Tamanho*/
     width: 60dvw;
     height: 50dvh;
+    padding-left: 1%;
 
     /*Configs estilo*/
     border-style: solid;
@@ -854,6 +868,12 @@ input, select {
     background-color: white;
 
 }
+
+#estoque_out02 ul {
+    font-size: 110%;
+    margin-top: 1dvh;
+}
+
 
 #estoqueNome02{
     /*Config Grid*/
