@@ -715,6 +715,8 @@ input, select {
     align-items: center;
 }
 
+
+
 /*-------------------------- Estoque ----------------------------*/
 
 
@@ -754,9 +756,10 @@ input, select {
 
 }
 
-#out01{
+#estoque_out01{
     /*Config Grid*/
     grid-area: caixa01;
+    padding-left: 1%;
 
     /*Config posicionamento*/
     justify-self: center;
@@ -771,6 +774,11 @@ input, select {
     background-color: white;
 
     }
+
+#estoque_out01 ul {
+    font-size: 110%;
+    margin-top: 1dvh;
+}
 
 /*Segundo article do estoque*/
 .estoqueArt02{ /*Estoque*/

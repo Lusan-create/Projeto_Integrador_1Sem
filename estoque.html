@@ -5,9 +5,9 @@
     <title>Menu Logistico</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    
+    <script src = 'script.js'></script>
 </head>
-<body>
+<body onload="inicio_estoque()">
     <section class="sombra_navbar">
         <header>
             <a href="menu.html">
@@ -29,11 +29,10 @@
 
     <main class="tela_menu" id=mainEstoque>
 
-        <article class="estoqueArt01">
+        <article class="estoqueArt01" id="estoque_inout">
             <input type="text" placeholder="Código do produto" id="estoqueCod01">
             <p id="estoqueNome01">ENTRADAS E SAÍDAS</p>
-            <section id="out01">
-                <ul></ul>
+            <section id="estoque_out01">
             </section>
         </article>
 
