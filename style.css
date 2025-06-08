@@ -113,30 +113,6 @@ main {
     box-shadow: 0 0 10px hsl(0, 0%, 0%);
 }
 
-#login {
-    width: clamp(100px, 40%, 500px);
-    height: clamp(50px, 5%, 100%);
-    padding: 20px;
-    font-size: clamp(1rem, 2.5dvh , 3rem);
-    margin: 20px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
-                -2px -2px 10px hsla(0, 0%, 100%, 0.5);
-}
-
-#senha {
-    width: clamp(100px, 40%, 500px);
-    height: clamp(50px, 5%, 100px);
-    padding: 20px;
-    font-size: clamp(1rem, 2.5dvh , 3rem);
-    margin: 20px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
-                -2px -2px 10px hsla(0, 0%, 100%, 0.5);
-}
-
 #bt_login {
     width: clamp(50px, 20%, 200px);
     height: clamp(50px, 5%, 100%);
@@ -150,9 +126,6 @@ main {
     cursor: pointer;
     box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.7);
 }
-
-
-/*--------------------- Tela Menu com Bootstrap ---------------------*/
 
 .body_bootstrap {
     background-color: lightgray;
