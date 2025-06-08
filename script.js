@@ -521,9 +521,21 @@ function inicio_estoque(){
         
             out = document.getElementById('estoque_out01')
             info = document.createElement('ul')
-            info.textContent = `- Código:${pecas.codigo[x]} -- Nome:${pecas.codigo[x]} -- Data:${movimento.dia[i]}/${movimento.mes[i]} -- Quantidade:${inout}${movimento.quantidade[i]}.`
+            info.textContent = `- Código: ${pecas.codigo[x]} -- Nome: ${pecas.codigo[x]} -- Data: ${movimento.dia[i]}/${movimento.mes[i]} -- Quantidade: ${inout}${movimento.quantidade[i]}.`
             out.appendChild(info)
-    }}}
+    
+            }
+        }
+    }   
+
+    for (i = 0; i < pecas.codigo.length; i++){
+
+                const out = document.getElementById("estoque_out02")
+                const item = document.createElement("ul");
+                item.textContent = `- Código: ${movimento.codigo[i]} -- Nome: ${pecas.nome[i]} -- Quantidade em estoque: ${pecas.total[i]}`;
+                out.appendChild(item);
+        
+    }
 }
 
 
