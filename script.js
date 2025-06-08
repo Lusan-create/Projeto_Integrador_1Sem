@@ -1,19 +1,6 @@
 
 /*----------------------------------- Temp --------------------------------*/
-async function carregar_dados(){
 
-    temp = await fetch('cadastro.json')
-    .then(response => response.json)
-    .then(data =>{
-        console.log(data)
-    })
-} 
-
-function reset_listas(){
-    localStorage.setItem("cadastro", JSON.stringify(pecas)) //Reseta os cadastros
-
-    localStorage.setItem("movimento", JSON.stringify(movimento)) //Reseta os movimentos
-}
 
 /* -------------------------------- Variaveis ------------------------------------- */
 
@@ -85,7 +72,72 @@ function armazenamento(){
         document.getElementById("username").innerText = "Visitante"
 
     }
-}
+
+     teste = JSON.parse(localStorage.getItem('cadastro'))
+    if (teste.codigo.length != 0 ){
+
+    }
+    else{
+        try{
+            fetch('cadastro.json')
+                .then(response => response.json())
+                .then(values => values.forEach(value => {
+                
+                        pecas.codigo.push(value.codigo)
+
+                        pecas.total.push(value.total)
+
+                        pecas.nome.push(value.nome)
+
+                        pecas.marca.push(value.marca)
+
+                        pecas.categoria.push(value.categoria)
+
+                        pecas.quantidade.push(value.quantidade)
+
+                        pecas.preco.push(value.preco)
+                        
+                        localStorage.setItem("cadastro", JSON.stringify(pecas))
+                    }    
+                ))
+            }
+            catch{console.log('Cadastro.json não foi carregado')}
+        } 
+        console.log(pecas)
+
+        try{
+        fetch('movimento.json')
+            .then(response => response.json())
+            .then(values => values.forEach(value => {
+                
+                    movimento.codigo.push(value.codigo)
+                    console.log(movimento)
+
+                    movimento.mes.push(value.mes)
+
+                    movimento.dia.push(value.dia)
+
+                    movimento.quantidade.push(value.quantidade)
+
+                    movimento.setor.push(value.setor)
+
+                    movimento.inout.push(value.inout)
+                    localStorage.setItem("movimento", JSON.stringify(movimento))
+            }))
+            }
+            catch{console.log('estoque.json não foi carregado')}
+
+        console.log(movimento)
+        
+        
+
+
+}  
+        
+    
+    
+
+
 
 
 
@@ -561,3 +613,9 @@ function inicio_catalogo(){  /* Puxa o LocalStorage e printa os itens salvos no 
         li.appendChild(ul);
     };
 };
+
+
+function reset_listas(){
+    localStorage.setItem("movimento", JSON.stringify(movimento))
+    localStorage.setItem("cadastro", JSON.stringify(pecas))
+}

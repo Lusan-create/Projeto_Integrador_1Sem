@@ -1,0 +1,42 @@
+[
+    {
+        "codigo":         "001",
+        "mes" :           "01",
+        "dia":            "12",
+        "quantidade" :    "25",
+        "setor":          "B1",
+        "inout":          "in"
+    },
+    {
+        "codigo":         "001",
+        "mes" :           "01",
+        "dia":            "3",
+        "quantidade" :    "20",
+        "setor":          "B1",
+        "inout":          "out"
+    },
+    {
+        "codigo":         "003",
+        "mes" :           "01",
+        "dia":            "6",
+        "quantidade" :    "15",
+        "setor":          "B2",
+        "inout":          "in"
+    },
+    {
+        "codigo":         "002",
+        "mes" :           "03",
+        "dia":            "23",
+        "quantidade" :    "30",
+        "setor":          "B3",
+        "inout":          "in"
+    },
+    {
+        "codigo":         "003",
+        "mes" :           "04",
+        "dia":            "15",
+        "quantidade" :    "10",
+        "setor":          "B2",
+        "inout":          "out"
+    }
+]
