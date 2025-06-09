@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Ferragens Negrão</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+<body onload="inicio_estoque()">
+    <section class="sombra_navbar">
+        <header>
+            <a href="menu.html">
+            <img src="imgs/logo_empresa.png" alt="Logo Ferragens Negrão" class="logo">
+            </a>
+            <section class="user_login">
+                <p id="username">Admin</p>
+            </section>
+        </header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="menu.html">PEÇAS</a></li>
+                <li><a href="estoque.html">ESTOQUE</a></li>
+                <li><a href="menu.html">RASTREIO</a></li>
+                <li><a href="catalogo.html">CATÁLOGO</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <main class="tela_grafico">
+        <article class="linha_cima">
+            <section class="grafico01">
+                <h1>Gráfico de Entradas e Saídas</h1>
+                <canvas id="graficoEntradaSaida"></canvas>
+            </section>
+            <section class="grafico02">
+                <h1>Gráfico de Estoque</h1>
+                <canvas id="graficoEstoque"></canvas>
+            </section>
+        </article>
+        <article class="linha_baixo">
+            <section class="grafico03">
+                <h1>Gráfico de Vendas</h1>
+                <canvas id="graficoVendas"></canvas>
+            </section>
+        </article>
+    </main>
+    
+    <footer></footer>
+
+</body>
+</html>
