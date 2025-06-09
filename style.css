@@ -868,3 +868,85 @@ input, select {
     
     
 }
+
+/*------------------- Tela dos Gráficos -------------------*/
+
+.tela_grafico {
+    display: grid;
+    grid-template-areas: "linha_cima linha_cima"
+                         "linha_baixo linha_baixo";
+    gap: clamp(1dvh, 10dvh, 100dvh) clamp(1dvw, 20dvw, 100dvw);
+}
+
+.linha_cima {
+    grid-area: linha_cima;
+    display: flex;
+    gap: clamp(1dvh, 3dvh, 15dvh) clamp(1dvw, 20dvw, 100dvw);
+    justify-content: center;
+}
+
+.linha_baixo {
+    grid-area: linha_baixo;
+    display: grid;
+    justify-content: center;
+}
+
+.grafico01 h1 {
+    text-align: center;
+    background-color: hsl(0, 0%, 25%);
+    color: white;
+    padding: clamp(1dvh, 1.2dvh, 20px) clamp(1dvw, 1.2dvw, 20px);
+    box-shadow: 3px 5px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 100%, 0.6);
+    border-radius: 5px;
+    font-size: clamp(1rem, 2.2dvh, 2rem);
+    margin-bottom: 20px;
+}
+
+.grafico01 canvas {
+    width: 480px;
+    height: 400px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 10px 10px 10px hsla(0, 0%, 0%, 0.2);
+}
+
+.grafico02 h1 {
+    text-align: center;
+    background-color: hsl(0, 0%, 25%);
+    color: white;
+    padding: clamp(1dvh, 1.2dvh, 20px) clamp(1dvw, 1.2dvw, 20px);
+    box-shadow: 3px 5px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 100%, 0.6);
+    border-radius: 5px;
+    font-size: clamp(1rem, 2.2dvh, 2rem);
+    margin-bottom: 20px;
+}
+
+.grafico02 canvas {
+    width: 480px;
+    height: 400px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 10px 10px 10px hsla(0, 0%, 0%, 0.2);
+}
+
+.grafico03 h1 {
+    text-align: center;
+    background-color: hsl(0, 0%, 25%);
+    color: white;
+    padding: clamp(1dvh, 1.2dvh, 20px) clamp(1dvw, 8dvw, 20dvw);
+    box-shadow: 3px 5px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 100%, 0.6);
+    border-radius: 5px;
+    font-size: clamp(1rem, 2.2dvh, 2rem);
+    margin-bottom: 20px;
+}
+
+.grafico03 canvas {
+    width: 480px;
+    height: 400px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 10px 10px 10px hsla(0, 0%, 0%, 0.2);
+}
