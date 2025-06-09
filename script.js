@@ -452,6 +452,9 @@ function Descarta_entrada(){
 
 async function gera_relatorio(){
 
+    movimento = JSON.parse(localStorage.getItem("movimento"))
+    pecas = JSON.parse(localStorage.getItem('cadastro'))
+
     const{ jsPDF } = window.jspdf;
 
     const pdf = new jsPDF();
@@ -462,26 +465,30 @@ async function gera_relatorio(){
     pdf.text("Entradas e saídas:", 77, 30)
     let y = 40
     let inout
+
     
     for (let i = 0; i < movimento.codigo.length; i++){
-        for (let x = 0; x < pecas.codigo.length; x++){
-            if (pecas.codigo[x] == movimento.codigo[i]){
-                if(movimento.inout[x] == "in"){
+        for (let z = 0; z < pecas.codigo.length; z++){
+            if (pecas.codigo[z] == movimento.codigo[i]){
+                if(movimento.inout[z] == "in"){   
                     inout = "+"
                 }
                 else {inout = "-" }
 
-                let texto = `- Código: ${pecas.codigo[x]} -- Nome: ${pecas.nome[x]} -- Data: ${movimento.dia[x]}/${movimento.mes[x]} -- Quantidade: ${inout}${movimento.quantidade[x]}.`
-
+                let texto = `- Código: ${pecas.codigo[z]} -- Nome: ${pecas.nome[z]} -- Data: ${movimento.dia[z]}/${movimento.mes[z]} -- Quantidade: ${inout}${movimento.quantidade[z]}.`
                 console.log(texto)
+
                 pdf.text(texto, 10,y)
                 y = y + 10
+                
             }    
         }   
 
         
     }
+    pdf.text('---------------------------------------------------------------------------------------------------------------------', 0, 20)
 
+    
     pdf.save("relatório.pdf")
 
 }
