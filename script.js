@@ -463,7 +463,7 @@ async function gera_relatorio(){
     pdf.text('---------------------------------------------------------------------------------------------------------------------', 0, 20)
 
     pdf.text("Entradas e saídas:", 77, 30)
-    let y = 40
+    let y = 50
     let inout
 
     
@@ -476,20 +476,49 @@ async function gera_relatorio(){
                 else {inout = "-" }
 
                 let texto = `- Código: ${pecas.codigo[z]} -- Nome: ${pecas.nome[z]} -- Data: ${movimento.dia[z]}/${movimento.mes[z]} -- Quantidade: ${inout}${movimento.quantidade[z]}.`
-                console.log(texto)
+ 
 
                 pdf.text(texto, 10,y)
-                y = y + 10
+                y += 10
+
+                if (y > 280){
+                pdf.addPage()
+                y = 20
+                }
                 
             }    
         }   
 
         
     }
-    pdf.text('---------------------------------------------------------------------------------------------------------------------', 0, 20)
+    pdf.text('---------------------------------------------------------------------------------------------------------------------', 0, y)
+    y += 10
+
+    pdf.text("ESTOQUE", 90, y)
+    y += 20
+
+    for (let i = 0; i < pecas.codigo.length; i ++){
+
+        let texto = `- Código: ${pecas.codigo[i]} -- Nome: ${pecas.nome[i]} -- Data: ${movimento.dia[i]}/${movimento.mes[i]} -- Quantidade: ${inout}${movimento.quantidade[i]}.`
+        pdf.text(texto, 10,y)
+            y += 10
+
+        if (y > 280){
+        pdf.addPage()
+        y = 20
+        }
+    }
+    y += 20
+    pdf.text('---------------------------------------------------------------------------------------------------------------------', 0, y)
+    y += 10
+    
+    pdf.text('SENAI - PROJETO INTEGRADOR',110 , y)
+    y +=10
+    pdf.text('---------------------------------------------------------------------------------------------------------------------', 0, y)
+
+    pdf.save("relatório.pdf")
 
     
-    pdf.save("relatório.pdf")
 
 }
 
@@ -652,4 +681,184 @@ function inicio_catalogo(){  /* Puxa o LocalStorage e printa os itens salvos no 
 function reset_listas(){
     localStorage.setItem("movimento", JSON.stringify(movimento))
     localStorage.setItem("cadastro", JSON.stringify(pecas))
+}
+
+
+/* ---------------------------------------------------------------- Gráficos ------------------------------------------------ */
+
+function inicio_graficos(){
+
+
+    /* Leitura do local storage */
+    let teste = JSON.parse(localStorage.getItem('movimento'))
+
+    if (teste.codigo.length != 0  &&  teste != null && teste.codigo != undefined){ // Checa se o objeto 'movimento' está vazio
+        movimento = JSON.parse(localStorage.getItem('movimento'))
+        console.log('Local Storage Carregado: Movimentos')
+        console.log(movimento)
+    };
+
+    teste = JSON.parse(localStorage.getItem('cadastro'))
+
+    if (teste.codigo.length != 0  &&  teste != null && teste.codigo != undefined){ // checa se o objeto 'pecas' está vazio
+        pecas = JSON.parse(localStorage.getItem('cadastro'))
+        console.log('Local Storage Carregado: cadastro')
+        console.log(pecas)
+    };
+
+
+    /* Gera as cores dos gráficos */
+    const cores = [];
+    let qtd
+    if(pecas.codigo.length > pecas.codigo.length){
+        qtd = pecas.codigo.length
+    }
+    else{
+        qtd = pecas.codigo.length
+    }
+    for (let i = 0; i < qtd; i++) {
+        const r = Math.floor(Math.random() * 255);
+        const g = Math.floor(Math.random() * 255);
+        const b = Math.floor(Math.random() * 255);
+        cores.push(`rgba(${r}, ${g}, ${b}, 0.7)`);
+    }
+
+
+
+
+
+    /* Primeiro gráfico -- Entrada de peças */
+    let label = []
+    let info   = []
+    
+    for (let x = 0; x < pecas.codigo.length; x ++){
+        console.log(1)
+        for (let i = 0; i < movimento.codigo.length; i ++){
+            if (pecas.codigo[x] == movimento.codigo[i] && movimento.inout[i] == 'in'){
+    
+                console.log(label)
+                console.log(info)
+                
+                if( label.includes(pecas.codigo[x])){
+                    info[info.length - 1] = Number(info[info.length - 1]) + Number(movimento.codigo[i])
+                }
+                else{
+                label.push(pecas.codigo[x])
+                info.push(movimento.quantidade[i])
+                }
+                
+
+            }
+        }
+    }
+
+    console.log(label)
+    console.log(info)
+    const kleber = document.getElementById("graficoEntrada").getContext("2d")
+    const primeiroGrafico = new Chart(kleber,{
+        type: "bar",
+        data: {
+            labels: label,
+            datasets: [{
+
+                label: 'Saídas de peças',
+                data: info,
+                backgroundColor: "lightgreen"
+            }]
+        },
+        options: {
+            responsive: true,
+            scales:{
+                y:{
+                    beginAtZero: true
+                }
+            }
+        }
+    })
+
+
+    /* Segundo gráfico -- Saída de peças */
+    let label02 = []
+    let info02  = []
+    
+    for (let x = 0; x < pecas.codigo.length; x ++){
+        console.log(1)
+        for (let i = 0; i < movimento.codigo.length; i ++){
+            if (pecas.codigo[x] == movimento.codigo[i] && movimento.inout[i] == 'out'){
+    
+                console.log(label02)
+                console.log(info02)
+                
+                if( label02.includes(pecas.codigo[x])){
+                    info02[info02.length - 1] = Number(info02[info02.length - 1]) + Number(movimento.codigo[i])
+                }
+                else{
+                label02.push(pecas.codigo[x])
+                info02.push(movimento.quantidade[i])
+                }
+                
+
+            }
+        }
+    }
+    console.log(label02)
+    console.log(info02)
+    const jorge = document.getElementById("graficoSaida").getContext("2d")
+    const segundo_grafico = new Chart(jorge,{
+        type: "bar",
+        data: {
+            labels: label02,
+            datasets: [{
+
+                label: 'Saídas de peças',
+                data: info02,
+                backgroundColor: "lightblue"
+            }]
+        },
+        options: {
+            responsive: true,
+            scales:{
+                y:{
+                    beginAtZero: true
+                }
+            }
+        }
+    })
+
+
+    /* Terceiro gráfixo -- Estoque */
+    let label03 = []
+    let info03  = []
+    
+    for (let x = 0; x < pecas.codigo.length; x ++){
+        if (pecas.total[x] > 0){
+            label03.push(pecas.codigo[x])
+            info03.push(pecas.total[x])
+        }
+    }
+    
+    console.log(label03)
+    console.log(info03)
+    const parrot = document.getElementById("graficoEstoque").getContext("2d")
+    const terceiro_grafico = new Chart(parrot,{
+        type: "pie",
+        data: {
+            labels: label03,
+            datasets: [{
+
+                label: 'PEÇAS EM ESTOQUE',
+                data: info03,
+                backgroundColor: cores
+            }]
+        },
+        options: {
+            responsive: true,
+            scales:{
+                y:{
+                    beginAtZero: true
+                }
+            }
+        }
+    })
+
 }

@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body onload="inicio_estoque()">
+<body onload="inicio_graficos()">
     <section class="sombra_navbar">
         <header>
             <a href="menu.html">
@@ -21,8 +22,8 @@
             <ul>
                 <li><a href="menu.html">PEÇAS</a></li>
                 <li><a href="estoque.html">ESTOQUE</a></li>
-                <li><a href="menu.html">RASTREIO</a></li>
                 <li><a href="catalogo.html">CATÁLOGO</a></li>
+                <li><a href="graficos.html">CHARTS</a></li>
             </ul>
         </nav>
     </section>
@@ -30,18 +31,18 @@
     <main class="tela_grafico">
         <article class="linha_cima">
             <section class="grafico01">
-                <h1>Gráfico de Entradas e Saídas</h1>
-                <canvas id="graficoEntradaSaida"></canvas>
+                <h1>Gráfico de Entradas</h1>
+                <canvas id="graficoEntrada"></canvas>
             </section>
             <section class="grafico02">
-                <h1>Gráfico de Estoque</h1>
-                <canvas id="graficoEstoque"></canvas>
+                <h1>Gráfico de Saidas</h1>
+                <canvas id="graficoSaida"></canvas>
             </section>
         </article>
         <article class="linha_baixo">
             <section class="grafico03">
-                <h1>Gráfico de Vendas</h1>
-                <canvas id="graficoVendas"></canvas>
+                <h1>Gráfico de Estoque</h1>
+                <canvas id="graficoEstoque"></canvas>
             </section>
         </article>
     </main>
