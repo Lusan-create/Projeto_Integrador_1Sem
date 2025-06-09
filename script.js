@@ -607,7 +607,7 @@ function inicio_estoque(){
         
             out = document.getElementById('estoque_out01')
             info = document.createElement('ul')
-            info.textContent = `- Código: ${pecas.codigo[x]} -- Nome: ${pecas.codigo[x]} -- Data: ${movimento.dia[i]}/${movimento.mes[i]} -- Quantidade: ${inout}${movimento.quantidade[i]}.`
+            info.textContent = `- Código: ${pecas.codigo[i]} -- Nome: ${pecas.nome[x]} -- Data: ${movimento.dia[i]}/${movimento.mes[i]} -- Quantidade: ${inout}${movimento.quantidade[i]}.`
             out.appendChild(info)
     
             }
