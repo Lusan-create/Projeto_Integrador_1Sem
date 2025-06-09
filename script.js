@@ -103,7 +103,6 @@ function armazenamento(){
             }
             catch{console.log('Cadastro.json não foi carregado')}
         } 
-        console.log(pecas)
 
         try{
         fetch('movimento.json')
@@ -111,7 +110,6 @@ function armazenamento(){
             .then(values => values.forEach(value => {
                 
                     movimento.codigo.push(value.codigo)
-                    console.log(movimento)
 
                     movimento.mes.push(value.mes)
 
@@ -126,8 +124,6 @@ function armazenamento(){
             }))
             }
             catch{console.log('estoque.json não foi carregado')}
-
-        console.log(movimento)
         
         
 
@@ -454,12 +450,43 @@ function Descarta_entrada(){
 
 /*--------------------------------------------- Relatório ------------------------------------------------*/
 
-function gera_relatorio(){
-    alert('Relatório ainda não foi implementado.')
+async function gera_relatorio(){
+
+    const{ jsPDF } = window.jspdf;
+
+    const pdf = new jsPDF();
+
+    pdf.text("Relatório", 90, 10)
+    pdf.text('---------------------------------------------------------------------------------------------------------------------', 0, 20)
+
+    pdf.text("Entradas e saídas:", 77, 30)
+    let y = 40
+    let inout
+    
+    for (let i = 0; i < movimento.codigo.length; i++){
+        for (let x = 0; x < pecas.codigo.length; x++){
+            if (pecas.codigo[x] == movimento.codigo[i]){
+                if(movimento.inout[x] == "in"){
+                    inout = "+"
+                }
+                else {inout = "-" }
+
+                let texto = `- Código: ${pecas.codigo[x]} -- Nome: ${pecas.nome[x]} -- Data: ${movimento.dia[x]}/${movimento.mes[x]} -- Quantidade: ${inout}${movimento.quantidade[x]}.`
+
+                console.log(texto)
+                pdf.text(texto, 10,y)
+                y = y + 10
+            }    
+        }   
+
+        
+    }
+
+    pdf.save("relatório.pdf")
+
 }
 
-
-
+    
 
 
 /* -------------------------------------------- Cadastro de peças ------------------------------------------------------- */
@@ -580,11 +607,11 @@ function inicio_estoque(){
         }
     }   
 
-    for (i = 0; i < pecas.codigo.length; i++){
+    for (let i = 0; i < pecas.codigo.length; i++){
 
                 const out = document.getElementById("estoque_out02")
                 const item = document.createElement("ul");
-                item.textContent = `- Código: ${movimento.codigo[i]} -- Nome: ${pecas.nome[i]} -- Quantidade em estoque: ${pecas.total[i]}`;
+                item.textContent = `- Código: ${pecas.codigo[i]} -- Nome: ${pecas.nome[i]} -- Quantidade em estoque: ${pecas.total[i]}`;
                 out.appendChild(item);
         
     }
@@ -607,7 +634,7 @@ function inicio_catalogo(){  /* Puxa o LocalStorage e printa os itens salvos no 
     }
     const li = document.getElementById("catalogo_out")
 
-    for (let i = 0; i < pecas.codigo.length; i++){
+    for (let i = 0; i < pecas.codigo.length; i ++){
         const ul = document.createElement("ul");
         ul.textContent = `Código: ${pecas.codigo[i]} -- Produto: ${pecas.nome[i]} -- Marca: ${pecas.marca[i]} -- Categoria: ${pecas.categoria[i]} -- QTD Embalagem: ${pecas.quantidade[i]} -- Preço: ${pecas.preco[i]}.`;
         li.appendChild(ul);
