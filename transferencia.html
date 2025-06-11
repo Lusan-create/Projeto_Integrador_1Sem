@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Cadastro de Produtos</title>
+    <link rel="stylesheet" href="style.css">    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+<body onload="inicio_cadastro()">
+    <section class="sombra_navbar">
+        <header>
+            <a href="menu.html"><img src="imgs/logo_empresa.png" alt="Logo Ferragens Negrão" class="logo"></a>
+            <section class="user_login">
+                <p>Admin</p>
+            </section>
+        </header>
+
+        <nav class="navbar">
+            <ul>
+                <li><a href="menu.html">PEÇAS</a></li>
+                <li><a href="estoque.html">ESTOQUE</a></li>
+                <li><a href="menu.html">RASTREIO</a></li>
+                <li><a href="catalogo.html">CATÁLOGO</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <main class="main_transferencia">
+        <article class="input_transferencia">
+            <input type="text" id="inputTransferencia01" placeholder="Código do produto">
+            <input type="text" id="inputTransferencia02" placeholder="Quantidade do produto">
+            <input type="text" id="inputTransferencia03" placeholder="Setor de origem">
+            <input type="text" id="inputTransferencia04" placeholder="Setor de destino">
+        </article>
+        <article class="output_transferencia">
+            <section id="janela_output">
+            </section>
+        </article>
+    </main>
+
+    <footer></footer>
+</body>
+</html>
