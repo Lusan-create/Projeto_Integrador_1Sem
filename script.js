@@ -48,6 +48,7 @@ function login_index(){
         reset_listas()
         user =  "Admin";
         localStorage.setItem('user', user)
+        console.log('reseted')
         window.location.href = "menu.html";
     }
     else{
@@ -73,13 +74,16 @@ function armazenamento(){
 
     }
 
-     teste = JSON.parse(localStorage.getItem('cadastro'))
-    if (teste.codigo.length != 0 ){
+     let teste = JSON.parse(localStorage.getItem('cadastro'))
+    if (teste.codigo.length > 0 ){ 
+        movimento = JSON.parse(localStorage.getItem("movimento"))  //Entra o obejto movimento   
+        pecas = JSON.parse(localStorage.getItem('cadastro'))        //Entr o obejto
+        console.log('Local storage carregado com sucesso')
 
     }
     else{
         try{
-            fetch('cadastro.json')
+            fetch('cadastro.json') // Puxa o cadasro.json
                 .then(response => response.json())
                 .then(values => values.forEach(value => {
                 
@@ -98,14 +102,15 @@ function armazenamento(){
                         pecas.preco.push(value.preco)
                         
                         localStorage.setItem("cadastro", JSON.stringify(pecas))
+                        console.log('Json Carregado (Cadastro)')
                     }    
                 ))
             }
             catch{console.log('Cadastro.json não foi carregado')}
-        } 
+         
 
         try{
-        fetch('movimento.json')
+        fetch('movimento.json') // Puxa o movimento.json
             .then(response => response.json())
             .then(values => values.forEach(value => {
                 
@@ -121,10 +126,11 @@ function armazenamento(){
 
                     movimento.inout.push(value.inout)
                     localStorage.setItem("movimento", JSON.stringify(movimento))
+                    console.log('json Carregado (movimentos)')
             }))
             }
             catch{console.log('estoque.json não foi carregado')}
-        
+}
         
 
 
@@ -486,6 +492,7 @@ function submete_entrada(){
                 localStorage.setItem("movimento", JSON.stringify(movimento))
                 localStorage.setItem("cadastro", JSON.stringify(pecas))
                 contador =  contador + 1
+                console.log(contador)
 
                 
 
@@ -513,16 +520,18 @@ function submete_entrada(){
     };
     if (movimento.codigo.length == x && temp == 0){
         alert("Código não encontrado")
+        
     }
 }    
 
 function Descarta_entrada(){
-    if(contador == 0){ // Caso nenhuma informação tenha sido adicionada
+    if(contador <= 0){ // Caso nenhuma informação tenha sido adicionada
         alert('Não há nenhuma submissão para descartar')
+        return 0
     }
     else if (contador > 0){
         console.log(contador)
-        for (let i = 0; i < pecas.codigo.length; i++){
+        for (let i = 0; i < pecas.codigo.length; i++){ // Passa pelo objeto pecas
             console.log(movimento.codigo [movimento.codigo.length - 1])
             if (pecas.codigo[i] == movimento.codigo[movimento.codigo.length - 1]){
                 
@@ -552,6 +561,7 @@ function Descarta_entrada(){
                 li.removeChild(li.lastElementChild)
 
                 localStorage.setItem("movimento", JSON.stringify(movimento)) // Salva as alterações no local storage
+                localStorage.setItem("cadastro", JSON.stringify(pecas))
                 
                 alert('Item retirado.')
                 
@@ -752,7 +762,7 @@ function inicio_estoque(){
         
             out = document.getElementById('estoque_out01')
             info = document.createElement('ul')
-            info.textContent = `- Código: ${pecas.codigo[i]} -- Nome: ${pecas.nome[x]} -- Data: ${movimento.dia[i]}/${movimento.mes[i]} -- Quantidade: ${inout}${movimento.quantidade[i]} -- Setor: ${movimento.setor[i]}.`
+            info.textContent = `- Código: ${movimento.codigo[i]} -- Nome: ${pecas.nome[x]} -- Data: ${movimento.dia[i]}/${movimento.mes[i]} -- Quantidade: ${inout}${movimento.quantidade[i]} -- Setor: ${movimento.setor[i]}.`
             out.appendChild(info)
     
             }
@@ -797,6 +807,7 @@ function inicio_catalogo(){  /* Puxa o LocalStorage e printa os itens salvos no 
 function reset_listas(){
     localStorage.setItem("movimento", JSON.stringify(movimento))
     localStorage.setItem("cadastro", JSON.stringify(pecas))
+    console.log('Resetado')
 }
 
 
