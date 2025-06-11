@@ -10,7 +10,7 @@
     {
         "codigo":         "001",
         "mes" :           "01",
-        "dia":            "3",
+        "dia":            "03",
         "quantidade" :    "20",
         "setor":          "B1",
         "inout":          "out"
@@ -18,7 +18,7 @@
     {
         "codigo":         "003",
         "mes" :           "01",
-        "dia":            "6",
+        "dia":            "06",
         "quantidade" :    "15",
         "setor":          "B2",
         "inout":          "in"

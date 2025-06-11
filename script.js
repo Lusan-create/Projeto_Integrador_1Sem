@@ -137,19 +137,104 @@ function armazenamento(){
 
 
 
-/* Rastreio */
+/* -------------------------------------------- Rastreio ----------------------------------------- */
+
 function faz_rastreio(){
-    let rastreio = document.getElementById('cod_rastreio').value;
-    alert(rastreio)
-    alert('O rastreio de peças não está implementado')
+
+    movimento = JSON.parse(localStorage.getItem("movimento"))  //Entra o obejto movimento   
+    pecas = JSON.parse(localStorage.getItem('cadastro'))        //Entr o obejto
+
+    let lista = { // objeto para organizar as informações
+        codigo: 'codigo',
+        setor: [],
+        quantidade:[0]
+    }
+    let total = 0
+    let referencia
+
+    let rastreio = document.getElementById('cod_rastreio').value; // entrada do input
+    lista.codigo = rastreio // Coloca o código no objeto
+
+    if(pecas.codigo.includes(rastreio)){} // Checa se o código  existe no sistema
+    else{
+        return alert('Esse código não existe')
+    }
+
+    if(movimento.codigo.includes(rastreio)){} // Checa se o código possui algum movimento
+    else{
+        return alert('Não há movimentos com esse código')
+    }
+
+    for (let i = 0; i < movimento.codigo.length; i++){ // Cadastra os setores
+        if(lista.setor.includes(movimento.setor[i]) != true && movimento.codigo[i] == lista.codigo){
+            lista.setor.push(movimento.setor[i])
+        }
+    }
+
+    for (let i= 0; i < lista.setor.length ; i++){ // Passa pelo objeto lista de setores
+        
+        for (let x = 0; x < movimento.codigo.length; x ++){ // Passa pela lista de setores do objeto movimento
+            referencia = 1
+            
+            if(movimento.codigo[x] == lista.codigo && lista.setor[i] == movimento.setor[x]){ // Checa se o código e o setor são correspondentes
+                if (movimento.inout[x] == 'in' && lista.codigo == movimento.codigo[x]){ // Soma caso seja entrada
+                   if (lista.quantidade.length == i + 1){
+                        lista.quantidade[i] = Number(lista.quantidade[i]) + Number(movimento.quantidade[x])
+                    }
+                    else{
+                        total = total + Number(movimento.quantidade[x])
+                        lista.quantidade.push(total)
+                    }
+                }
+                else if(movimento.inout[x] == 'out' && lista.codigo == movimento.codigo[x]) { // Subtrai caso seja saída
+                    
+                    if (lista.quantidade.length == i + 1){
+                        lista.quantidade[i] = Number(lista.quantidade[i]) - Number(movimento.quantidade[x])
+                    }
+                    else{
+                        total = total - Number(movimento.quantidade[x])
+                        lista.quantidade.push(total)
+                    }
+                    
+                    
+                }
+            }
+        }
+    }
+    console.log(lista)
+
+    let formatado = `Código ${lista.codigo}: `
+    referencia = 0
+    for (let i = 0; i < lista.setor.length; i++){ // Formata a saída.
+        referencia = referencia + 1
+
+        if(referencia == lista.setor.length){
+            let setor = String(lista.setor[i])
+            let qtd = String(lista.quantidade[i])
+            console.log(qtd)
+            formatado = formatado + `${setor} = ${qtd}.`
+        }
+        else{
+            let setor = String(lista.setor[i])
+            let qtd = String(lista.quantidade[i])
+            formatado = formatado + `${setor} = ${qtd}, `
+        }
+    }
+    console.log(lista)
+    return alert(formatado)
+    
+
+
+
+
 }
 
 /* --------------------------------------------------------Saída de peças -------------------------------------------------- */
 
-function ir_saida_pecas(){
+function ir_saida_pecas(){ // Função que movimenta a tela á saída de peças
     var user = localStorage.getItem("user")
 
-    if (user == "Admin"){
+    if (user == "Admin"){ // Checa se é Admin
         window.location.href = "saida_pecas.html";
     }
     else{
@@ -178,78 +263,107 @@ function ir_saida_pecas(){
 };
 
 
-function submete_saida(){
+function submete_saida(){ // Função ativada ao apertar o botão de submeter na saida_pecas.html
 
     let x = movimento.codigo.length
     let temp = 0
-    for (let i = 0; i < pecas.codigo.length; i++){
+    let qtdSetor = 0
+    let setor = document.getElementById('cod_setor').value
+    setor = setor.toUpperCase()
+    
 
-        if (pecas.codigo[i] == document.getElementById("cod_produto").value){
+    for (let i = 0; i < pecas.codigo.length; i++){ // Loop que passa pelo atribulo código no objeto pecas. Serve para checar se o cósigo existe e encontrar para possiveis mudanças
+        
+        for  (let x = 0; x < movimento.setor.length; x ++){ // Encontra a quantidade armazenada no setor
+            
+            setor = setor.toUpperCase()
+            if(movimento.codigo[x] == document.getElementById('cod_produto').value  && movimento.inout[x] == 'in'){
+                qtdSetor = qtdSetor + Number(movimento.quantidade[x])
+                console.log(`teste : ${qtdSetor}`)
+            }
+            else if(movimento.codigo[x] == document.getElementById('cod_produto').value  && movimento.inout[x] == 'out'){
+                qtdSetor = qtdSetor - Number(movimento.quantidade[x])
+                console.log(`teste 02: ${qtdSetor}`)
+            }
+        }
 
-            if(pecas.total[i] - document.getElementById("cod_qtd").value > 0 && document.getElementById("cod_qtd").value != 0){1
-
-            /* Entrada do código */
-            let codigo = pecas.codigo[i]
-            movimento.codigo.push(codigo)
-
-            /* Quantidade de embalagens */
-            let quantidade = document.getElementById("cod_qtd").value
-            movimento.quantidade.push(quantidade)
-
-            /* Pega a data diretamente do navegador (Dia e Mês) */
-            data = new Date()
-            data.toLocaleDateString('pt-BR')
-            mes = String(data.getMonth()).padStart(2, '0')
-            dia = String(data.getDate()).padStart(2, '0')
-            movimento.mes.push(mes)
-            movimento.dia.push(dia)
-
-            /* Local de armazenamento */
-            let setor = document.getElementById("cod_setor").value
-            movimento.setor.push(setor)
-
-            /* Total */
-            let total = Number(pecas.total[i]) - Number(document.getElementById('cod_qtd').value)
-            pecas.total[i] = total
-            /* demonstra que é uma saida */
-            let saida = 'out'
-            movimento.inout.push(saida)
-
-            contador = contador + 1
+        if (qtdSetor > 0){
+            if (pecas.codigo[i] == document.getElementById("cod_produto").value){ // Checa se o código existe e retorna uma mensagem caso não exista
 
 
-            /* Armazena as informações atualizadas no local storage */
-            localStorage.setItem("movimento", JSON.stringify(movimento))
-            localStorage.setItem("cadastro", JSON.stringify(pecas))
+                if(pecas.total[i] - document.getElementById("cod_qtd").value > 0 && document.getElementById("cod_qtd").value != 0){ // Checa se a saída é maior que zero Manda uma mensagem caso não seja
+
+                /* Entrada do código */
+                let codigo = pecas.codigo[i]
+                movimento.codigo.push(codigo)
+
+                /* Quantidade de embalagens */
+                let quantidade = document.getElementById("cod_qtd").value
+                movimento.quantidade.push(quantidade)
+
+                /* Pega a data diretamente do navegador (Dia e Mês) */
+                data = new Date()
+                data.toLocaleDateString('pt-BR')
+                mes = String(data.getMonth()).padStart(2, '0')
+                dia = String(data.getDate()).padStart(2, '0')
+                movimento.mes.push(mes)
+                movimento.dia.push(dia)
+
+                /* Local de armazenamento */
+                setor = document.getElementById("cod_setor").value
+                movimento.setor.push(setor)
+
+                /* Total */
+                let total = Number(pecas.total[i]) - Number(document.getElementById('cod_qtd').value)
+                pecas.total[i] = total
+                /* demonstra que é uma saida */
+                let saida = 'out'
+                movimento.inout.push(saida)
+
+                contador = contador + 1
+
+
+                /* Armazena as informações atualizadas no local storage */
+                localStorage.setItem("movimento", JSON.stringify(movimento))
+                localStorage.setItem("cadastro", JSON.stringify(pecas))
 
 
 
             
-            const li = document.getElementById("saida_out")
-            const ul = document.createElement("ul");
-            ul.textContent = `Código:${codigo} -- Quantidade:${quantidade} -- Data:${data.getDate()}/${data.getMonth()} -- Setor:${setor}`;
-            li.appendChild(ul);
+                const li = document.getElementById("saida_out")
+                const ul = document.createElement("ul");
+                ul.textContent = `Código:${codigo} -- Quantidade:${quantidade} -- Data:${data.getDate()}/${data.getMonth()} -- Setor:${setor}`;
+                li.appendChild(ul);
 
-            /* retorna a lista e avisa que entrada foi realizada */
-            console.log('Lista movimento:')
-            console.log(movimento)
-            console.log('Lista Cadastro:')
-            console.log(pecas)
-            alert("Entrada Realizada")
+                /* retorna a lista e avisa que entrada foi realizada */
+                console.log('Lista movimento:')
+                console.log(movimento)
+                console.log('Lista Cadastro:')
+                console.log(pecas)
+                alert("saída Realizada")
+                return 0;
+             
+                }
+                else if(document.getElementById("cod_qtd").value == 0 || document.getElementById("cod_qtd").value == null){
+                    alert('A quantidade deve ser maior que 0')
+                    return 0
+                }
+                else{alert(`Não é possivel retirar essa quantidade. Não há itens o sufucientes \nItens restantes: ${pecas.total[i]}`)
+                    return 0
+                }
             }
-            else if(document.getElementById("cod_qtd").value == 0 || document.getElementById("cod_qtd").value == null){
-                alert('A quantidade deve ser maior que 0')
-                temp = 1
-            }
-            else{alert(`Não é possivel retirar essa quantidade. Não há itens o sufucientes \nItens restantes: ${pecas.total[i]}`)
-                temp = 1
-            }
-    }
+        }
+        else{
+            alert(`não há peças o suficiente Neste armazém (${setor}), /n/nPeças em neste setor: ${qtdSetor}`)
+            return 0
+        }
     };
     if (movimento.codigo.length == x && temp == 0){
         alert("Código não encontrado")
+        return 0
     }
-}    
+    
+}
 
 function descarta_saida(){
 
@@ -381,6 +495,8 @@ function submete_entrada(){
                 const ul = document.createElement("ul");
                 ul.textContent = `- Código:${codigo} -- Quantidade:${quantidade} -- Data:${dia}/${mes} -- Setor:${setor}`;
                 li.appendChild(ul);
+
+                let input = document.getElementById('')
 
                 /* retorna a lista e avisa que entrada foi realizada */
                 console.log(movimento)
@@ -623,20 +739,20 @@ function inicio_estoque(){
     for (i = 0; i < movimento.codigo.length; i++ ){ // Passa pelo objeto Movimento
         for (let x = 0; x < pecas.codigo.length; x++ ){ // Passa pelo objeto pecas
 
-            if(movimento.codigo[i] == pecas.codigo[x]){
+            if(movimento.codigo[i] == pecas.codigo[x]){ // O movimento encontra seu respectivo cadastro
 
 
-            if (movimento.inout[i] == 'in'){
+            if (movimento.inout[i] == 'in'){ // Checa se é entrada
                 inout = '+'
             }
 
-            if (movimento.inout[i] == 'out'){
+            if (movimento.inout[i] == 'out'){ // Checa se é saída
                 inout = '-'
             }
         
             out = document.getElementById('estoque_out01')
             info = document.createElement('ul')
-            info.textContent = `- Código: ${pecas.codigo[i]} -- Nome: ${pecas.nome[x]} -- Data: ${movimento.dia[i]}/${movimento.mes[i]} -- Quantidade: ${inout}${movimento.quantidade[i]}.`
+            info.textContent = `- Código: ${pecas.codigo[i]} -- Nome: ${pecas.nome[x]} -- Data: ${movimento.dia[i]}/${movimento.mes[i]} -- Quantidade: ${inout}${movimento.quantidade[i]} -- Setor: ${movimento.setor[i]}.`
             out.appendChild(info)
     
             }
