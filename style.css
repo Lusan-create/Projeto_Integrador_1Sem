@@ -189,6 +189,7 @@ main {
     margin-bottom: 20dvh;
 }
 
+
 .rastreio h1, .peças h1, .estoque h1{
     text-align: center;
     margin-bottom: 20px;
@@ -261,10 +262,21 @@ main {
     text-align: center;
 }
 
+.peças {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
 .grid_peças {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
+}
+
+.grid_peças02 {
+    display: flex;
+    justify-content: center;
 }
 
 .grid_estoque {
@@ -292,32 +304,6 @@ main {
 
     /*Config posicionamento*/
     align-items: center;
-}
-
-#inputCatalogo01{
-    /*Config Grid*/
-    grid-area: nome;
-
-    /*Config de posicionamento*/
-    margin: 0%;
-    margin-left: 7.4%;
-    margin-right: 0%;
-
-    /*Config de tamanho*/
-    height: 20%;
-    width: 90%;
-
-}
-#inputCatalogo02{
-    /*Configurações Grid*/
-    grid-area: produto;
-
-    /*Configurações de tamanho*/
-    width: 85%;
-    height: 20%;
-
-    /*Configurações de posicionamento*/
-    margin-right: 100%;
 }
 
 .fundoCatalogo{
@@ -589,20 +575,14 @@ input, select {
     height: 100%; /* garante que cresça com o restante da página */
     background-color: lightgray;
     padding: 20px;
-
-
 }
 
 .article_pecas{ /*Grid do display de entrada de peças*/
-
-        display: flex;
-        gap: 10px; /* Espaço entre os inputs */
-        padding: 20px; /* Opcional: dar uma folga interna */
-        justify-content:flex-start; /* Opcional: centralizar os inputs no meio da página */
-        align-content: center;
-        justify-content: center;
-        flex-direction: column; /* Coloca os campos um abaixo do outro */
-        width: 100%;
+    display: flex;
+    gap: 10px; /* Espaço entre os inputs */
+    padding: 20px; /* Opcional: dar uma folga interna */
+    flex-direction: column; /* Coloca os campos um abaixo do outro */
+    width: 100%;
 }
 
 .article_pecas input {
@@ -610,6 +590,20 @@ input, select {
     width: 100%; /* Define a largura total */
     height: 40px; /* Altura padrão */
     margin-bottom: 5px; /* Espaço entre os campos */
+}
+
+.pecas_input {
+  display: flex;
+  flex-direction: column;
+  width: clamp(100px, 90%, 500px); /* mesma largura dos inputs */
+  align-self: center;
+}
+
+.pecas_input label {
+  text-align: left;     /* alinha o texto da label à esquerda */
+  margin-bottom: 5px;   /* pequeno espaço entre label e input */
+  font-weight: bold;     /* opcional: deixa a label mais visível */
+  font-size: clamp(0.9rem, 1.8dvh, 1.5rem);
 }
 
 #cod_produto{
@@ -732,12 +726,6 @@ input, select {
     justify-self: center;
 }
 
-#entrada_input{
-    width: 100%;
-    justify-items: center;
-    align-items: center;
-}
-
 
 
 /*-------------------------- Estoque ----------------------------*/
@@ -796,7 +784,10 @@ input, select {
     border-style: solid;
     border-color: rgb(100, 100, 100);
     background-color: white;
+    box-shadow: 10px 10px 15px hsla(0, 0%, 0%, 0.3);
 
+    /*Configs de scroll*/
+    overflow: auto;
     }
 
 #estoque_out01 ul {
@@ -839,7 +830,7 @@ input, select {
     border-style: solid;
     border-color: rgb(100, 100, 100);
     background-color: white;
-
+    box-shadow: 10px 10px 15px hsla(0, 0%, 0%, 0.3);
 }
 
 #estoque_out02 ul {
@@ -862,12 +853,8 @@ input, select {
 
     /*Config de tamanho*/
     width: 35dvw;
-    height: 75%
-
-    /*Configs de posicionamento*/
-    
+    height: 75%;
 }
-
 
 /*------------------- Tela dos Gráficos -------------------*/
 
@@ -906,6 +893,7 @@ input, select {
 .grafico01 canvas {
     width: 480px;
     height: 400px;
+    padding: clamp(.5em, .8dvh, 5em) clamp(.5em, .8dvw, 5em);
     border-radius: 5px;
     background-color: white;
     box-shadow: 10px 10px 10px hsla(0, 0%, 0%, 0.2);
@@ -926,6 +914,7 @@ input, select {
 .grafico02 canvas {
     width: 480px;
     height: 400px;
+    padding: clamp(.5em, .8dvh, 5em) clamp(.5em, .8dvw, 5em);
     border-radius: 5px;
     background-color: white;
     box-shadow: 10px 10px 10px hsla(0, 0%, 0%, 0.2);
@@ -946,8 +935,71 @@ input, select {
 .grafico03 canvas {
     width: 480px;
     height: 400px;
+    padding: clamp(2em, 2dvh, 5em) clamp(2em, 1.2dvw, 5em);
     border-radius: 5px;
     background-color: white;
     box-shadow: 10px 10px 10px hsla(0, 0%, 0%, 0.2);
 }
 
+/*------------------- Tela de Transferência de Peças -------------------*/
+
+.input_transferencia {
+    justify-content: center;
+    display: grid;
+    gap: 40px;
+}
+
+#inputTransferencia01 {
+    width: clamp(100px, 35dvw, 800px);
+    height: clamp(50px, 5%, 100%);
+    padding: 10px;
+    font-size: clamp(1rem, 2dvh , 2rem);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
+}
+
+#inputTransferencia02 {
+    width: clamp(100px, 35dvw, 800px);
+    height: clamp(50px, 5%, 100%);
+    padding: 10px;
+    font-size: clamp(1rem, 2dvh , 2rem);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
+}
+
+#inputTransferencia03 {
+    width: clamp(100px, 35dvw, 800px);
+    height: clamp(50px, 5%, 100%);
+    padding: 10px;
+    font-size: clamp(1rem, 2dvh , 2rem);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
+}
+
+#inputTransferencia04 {
+    width: clamp(100px, 35dvw, 800px);
+    height: clamp(50px, 5%, 100%);
+    padding: 10px;
+    font-size: clamp(1rem, 2dvh , 2rem);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
+}
+
+.output_transferencia {
+    display: flex;
+    justify-self: center;
+    background-color: white;
+    border-style: solid;
+    width: 60dvw;
+    height: 60dvh;
+    margin: clamp(20px, 10dvh, 15dvh) auto;
+    box-shadow: 10px 10px 15px hsla(0, 0%, 0%, 0.5);
+}
