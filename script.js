@@ -1030,7 +1030,7 @@ function submete_transferencia(){ // ativada quando o botão de submeter for ape
         return 0
     }
 
-    if(document.getElementById("inputTransferencia01").value == ""){ // Qunatidade
+    if(document.getElementById("inputTransferencia01").value == ""){ // código
         alert("O código de produto está vazio.")
         return 0
     }
@@ -1038,11 +1038,11 @@ function submete_transferencia(){ // ativada quando o botão de submeter for ape
         alert("A quantidade está vazia.")
         return 0
     }
-    if(document.getElementById('inputTransferencia03').value == ""){ // Quantidade
+    if(document.getElementById('inputTransferencia03').value == ""){ // Origem
         alert("O setor de origem está vazio")
         return 0
     }
-    if(document.getElementById('inputTransferencia04').value == ""){ // Quantidade
+    if(document.getElementById('inputTransferencia04').value == ""){ // Destino
         alert("O setor de destino está vazio")
         return 0
     }
@@ -1062,12 +1062,8 @@ function submete_transferencia(){ // ativada quando o botão de submeter for ape
     }
 
     // Checa se a origem e o destino são iguais
-    setor_origem = document.getElementById('inputTransferencia03').value
-    setor_destino = document.getElementById('inputTransferencia04').value
-    setor_origem.toUpperCase()
-    setor_destino.toUpperCase()
 
-    if(setor_origem == setor_destino){
+    if(document.getElementById("inputTransferencia03").value == document.getElementById("inputTransferencia04").value){
         alert("os campos 3 (origem) e  o campo 4 (destino) são iguais.")
         return 0
     }
