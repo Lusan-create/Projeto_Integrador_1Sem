@@ -337,14 +337,13 @@ function submete_saida(){ // Função ativada ao apertar o botão de submeter na
     let temp = 0
     let qtdSetor = 0
     let setor = document.getElementById('cod_setor').value
-    setor = setor.toUpperCase()
     
 
     for (let i = 0; i < pecas.codigo.length; i++){ // Loop que passa pelo atribulo código no objeto pecas. Serve para checar se o cósigo existe e encontrar para possiveis mudanças
         
         for  (let x = 0; x < movimento.setor.length; x ++){ // Encontra a quantidade armazenada no setor
             
-            setor = setor.toUpperCase()
+
             if(movimento.codigo[x] == document.getElementById('cod_produto').value  && movimento.inout[x] == 'in'){
                 qtdSetor = qtdSetor + Number(movimento.quantidade[x])
                 console.log(`teste : ${qtdSetor}`)
@@ -539,8 +538,8 @@ function submete_entrada(){
                 data.toLocaleDateString('pt-BR')
                 mes = String(data.getMonth() + 1).padStart(2, '0')
                 dia = String(data.getDate()).padStart(2, '0')
-                movimento.mes.push(data.getMonth())
-                movimento.dia.push(data.getDate())
+                movimento.mes.push(mes)
+                movimento.dia.push(dia)
 
                 /* Local de armazenamento */
                 let setor = document.getElementById("cod_setor").value
@@ -920,16 +919,15 @@ function inicio_graficos(){
     let label = []
     let info   = []
     
-    for (let x = 0; x < pecas.codigo.length; x ++){
+    for (let x = 0; x < pecas.codigo.length; x ++){ // Passa pelo objeto peças (x)
         console.log(1)
-        for (let i = 0; i < movimento.codigo.length; i ++){
-            if (pecas.codigo[x] == movimento.codigo[i] && movimento.inout[i] == 'in'){
-    
-                console.log(label)
-                console.log(info)
+        for (let i = 0; i < movimento.codigo.length; i ++){ // Passa pelo objeto movimento (i)
+
+            if (pecas.codigo[x] == movimento.codigo[i] && movimento.inout[i] == 'in'){ // Checas se os códigos são iguais e se é entrada
                 
-                if( label.includes(pecas.codigo[x])){
-                    info[info.length - 1] = Number(info[info.length - 1]) + Number(movimento.codigo[i])
+                if( label.includes(pecas.codigo[x])){ // Checa se o código já foi registrado
+                    info[info.length - 1] = Number(info[info.length - 1]) + Number(movimento.quantidade[i])
+
                 }
                 else{
                 label.push(pecas.codigo[x])
@@ -950,9 +948,9 @@ function inicio_graficos(){
             labels: label,
             datasets: [{
 
-                label: 'Saídas de peças',
+                label: 'Entradas de peças',
                 data: info,
-                backgroundColor: "lightgreen"
+                backgroundColor: cores
             }]
         },
         options: {
@@ -1001,7 +999,7 @@ function inicio_graficos(){
 
                 label: 'Saídas de peças',
                 data: info02,
-                backgroundColor: "lightblue"
+                backgroundColor: cores
             }]
         },
         options: {
