@@ -75,13 +75,15 @@ function armazenamento(){
     }
 
      let teste = JSON.parse(localStorage.getItem('cadastro'))
-    if (teste.codigo.length > 0 ){ 
+    try {
+        if(teste.codigo.length > 0 || teste != null || teste != undefined ){ 
         movimento = JSON.parse(localStorage.getItem("movimento"))  //Entra o obejto movimento   
         pecas = JSON.parse(localStorage.getItem('cadastro'))        //Entr o obejto
         console.log('Local storage carregado com sucesso')
 
     }
-    else{
+    }
+    catch{
         try{
             fetch('cadastro.json') // Puxa o cadasro.json
                 .then(response => response.json())
