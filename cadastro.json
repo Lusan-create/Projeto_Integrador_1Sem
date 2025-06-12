@@ -7,7 +7,7 @@
             "categoria": "Abrasivos",
             "quantidade": "10",
             "preco": "98.90",
-            "total": "92"
+            "total": "5"
         },
         {
             "codigo": "002",
@@ -16,7 +16,7 @@
             "categoria": "Hidráulica",
             "quantidade": "5",
             "preco": "12.55",
-            "total": "103"
+            "total": "30"
         },
         {
             "codigo": "003",
@@ -25,7 +25,7 @@
             "categoria": "Elétrica",
             "quantidade": "2",
             "preco": "500.00",
-            "total": "35"
+            "total": "5"
         },
         {
             "codigo": "004",
@@ -34,7 +34,7 @@
             "categoria": "Pintura",
             "quantidade": "4",
             "preco": "75.90",
-            "total": "60"
+            "total": "0"
         },
         {
             "codigo": "005",
@@ -43,6 +43,6 @@
             "categoria": "Abrasivos",
             "quantidade": "20",
             "preco": "50.50",
-            "total": "85"
+            "total": "0"
         }
     ]
