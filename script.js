@@ -73,16 +73,69 @@ function armazenamento(){
         document.getElementById("username").innerText = "Visitante"
 
     }
-
-     let teste = JSON.parse(localStorage.getItem('cadastro'))
+    
+    
+    
+    let teste = JSON.parse(localStorage.getItem('cadastro'))
     try {
-        if(teste.codigo.length > 0 || teste != null || teste != undefined ){ 
+        if(teste.codigo.length > 0 && teste != null && teste != undefined ){ 
         movimento = JSON.parse(localStorage.getItem("movimento"))  //Entra o obejto movimento   
         pecas = JSON.parse(localStorage.getItem('cadastro'))        //Entr o obejto
         console.log('Local storage carregado com sucesso')
+        console.log(teste)
+    }
+    else{
+        try{
+            fetch('cadastro.json') // Puxa o cadasro.json
+                .then(response => response.json())
+                .then(values => values.forEach(value => {
+                
+                        pecas.codigo.push(value.codigo)
 
-    }
-    }
+                        pecas.total.push(value.total)
+
+                        pecas.nome.push(value.nome)
+
+                        pecas.marca.push(value.marca)
+
+                        pecas.categoria.push(value.categoria)
+
+                        pecas.quantidade.push(value.quantidade)
+
+                        pecas.preco.push(value.preco)
+                        
+                        localStorage.setItem("cadastro", JSON.stringify(pecas))
+                        console.log('Json Carregado (Cadastro)')
+                    }    
+                ))
+            }
+            catch{console.log('Cadastro.json não foi carregado')}
+         
+
+        try{
+        fetch('movimento.json') // Puxa o movimento.json
+            .then(response => response.json())
+            .then(values => values.forEach(value => {
+                
+                    movimento.codigo.push(value.codigo)
+
+                    movimento.mes.push(value.mes)
+
+                    movimento.dia.push(value.dia)
+
+                    movimento.quantidade.push(value.quantidade)
+
+                    movimento.setor.push(value.setor)
+
+                    movimento.inout.push(value.inout)
+                    localStorage.setItem("movimento", JSON.stringify(movimento))
+                    console.log('json Carregado (movimentos)')
+            }))
+            }
+            catch{console.log('estoque.json não foi carregado')}
+}
+            
+        }
     catch{
         try{
             fetch('cadastro.json') // Puxa o cadasro.json
@@ -157,6 +210,7 @@ function faz_rastreio(){
     console.log('Objeto movimento:')
     console.log(movimento)
     
+    let qtd_total = 0
 
     let lista = { // objeto para organizar as informações
         codigo: 'codigo',
@@ -227,6 +281,13 @@ function faz_rastreio(){
             formatado = formatado + `${setor} = ${qtd}, `
         }
     }
+    for (let x = 0; x < pecas.codigo.length; x++){
+        if (document.getElementById("cod_rastreio").value == pecas.codigo[x] ){
+            qtd_total = pecas.total
+        }
+    }
+
+    formatado = formatado + `  Total: ${qtd_total}`
     console.log(lista)
     return alert(formatado)
     
@@ -1136,7 +1197,7 @@ function submete_transferencia(){ // ativada quando o botão de submeter for ape
 
     const li = document.getElementById("janela_output")
     const ul = document.createElement("ul");
-    ul.textContent = `- codigo:${movimento.codigo[movimento.codigo.length - 1]} --- Setor:${movimento.setor[movimento.codigo.length - 2]}, QTD:${movimento.quantidade[movimento.codigo.length - 2]} ---> Setor:${movimento.setor[movimento.codigo.length - 1]}, QTD:${movimento.quantidade[movimento.codigo.length - 1]}`;
+    ul.textContent = `- Código:${movimento.codigo[movimento.codigo.length - 1]} --- Setor:${movimento.setor[movimento.codigo.length - 2]}, QTD:${movimento.quantidade[movimento.codigo.length - 2]} ---> Setor:${movimento.setor[movimento.codigo.length - 1]}, QTD:${movimento.quantidade[movimento.codigo.length - 1]}`;
     li.appendChild(ul);
 
 
