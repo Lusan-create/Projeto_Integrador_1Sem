@@ -147,19 +147,28 @@ function armazenamento(){
 
 function faz_rastreio(){
 
-    movimento = JSON.parse(localStorage.getItem("movimento"))  //Entra o obejto movimento   
-    pecas = JSON.parse(localStorage.getItem('cadastro'))        //Entr o obejto
+    movimento = JSON.parse(localStorage.getItem("movimento"))  //Entra o objeto movimento   
+    pecas = JSON.parse(localStorage.getItem('cadastro'))        //Entra o objeto
+
+    console.log('Objeto Pecas:')
+    console.log(pecas)
+    console.log('Objeto movimento:')
+    console.log(movimento)
+    
 
     let lista = { // objeto para organizar as informações
         codigo: 'codigo',
         setor: [],
-        quantidade:[0]
+        quantidade:[]
     }
     let total = 0
-    let referencia
 
     let rastreio = document.getElementById('cod_rastreio').value; // entrada do input
     lista.codigo = rastreio // Coloca o código no objeto
+    if(rastreio == ''){
+        alert('você não escreveu nada no rastreio de peças')
+        return 0
+    }
 
     if(pecas.codigo.includes(rastreio)){} // Checa se o código  existe no sistema
     else{
@@ -171,38 +180,28 @@ function faz_rastreio(){
         return alert('Não há movimentos com esse código')
     }
 
-    for (let i = 0; i < movimento.codigo.length; i++){ // Cadastra os setores
+    // Cadastra os setores
+    for (let i = 0; i < movimento.codigo.length; i++){ 
         if(lista.setor.includes(movimento.setor[i]) != true && movimento.codigo[i] == lista.codigo){
             lista.setor.push(movimento.setor[i])
+            lista.quantidade.push(0)
         }
     }
 
+    //Encontra as quantidades
     for (let i= 0; i < lista.setor.length ; i++){ // Passa pelo objeto lista de setores
         
         for (let x = 0; x < movimento.codigo.length; x ++){ // Passa pela lista de setores do objeto movimento
-            referencia = 1
             
             if(movimento.codigo[x] == lista.codigo && lista.setor[i] == movimento.setor[x]){ // Checa se o código e o setor são correspondentes
                 if (movimento.inout[x] == 'in' && lista.codigo == movimento.codigo[x]){ // Soma caso seja entrada
-                   if (lista.quantidade.length == i + 1){
+
                         lista.quantidade[i] = Number(lista.quantidade[i]) + Number(movimento.quantidade[x])
-                    }
-                    else{
-                        total = total + Number(movimento.quantidade[x])
-                        lista.quantidade.push(total)
-                    }
+
                 }
                 else if(movimento.inout[x] == 'out' && lista.codigo == movimento.codigo[x]) { // Subtrai caso seja saída
-                    
-                    if (lista.quantidade.length == i + 1){
-                        lista.quantidade[i] = Number(lista.quantidade[i]) - Number(movimento.quantidade[x])
-                    }
-                    else{
-                        total = total - Number(movimento.quantidade[x])
-                        lista.quantidade.push(total)
-                    }
-                    
-                    
+
+                    lista.quantidade[i] = Number(lista.quantidade[i]) - Number(movimento.quantidade[x])     
                 }
             }
         }
@@ -987,5 +986,173 @@ function inicio_graficos(){
             }
         }
     })
+
+}
+
+function ir_transferencia(){
+    var user = localStorage.getItem("user")
+
+    if(user == 'Admin'){
+        window.location.href = "transferencia.html"
+    }
+    else(alert("Você não possui permissão para acessar o cadastro de peças"))
+    
+
+};
+
+function inicio_transferencia(){  /* Inicia ao carregar a página e Checa se há algo no local storage. Caso possua alguma informação, ele puxa o local storage. */
+    let teste = JSON.parse(localStorage.getItem('movimento'))
+    if (movimento.codigo.length == 0 && teste !== null && teste.codigo !== undefined){
+        movimento = JSON.parse(localStorage.getItem("movimento"))
+
+        console.log(movimento)
+    }
+
+    teste = JSON.parse(localStorage.getItem('cadastro'))
+    if (pecas.codigo.length == 0 && teste !== null && teste.codigo !== undefined){
+        pecas = JSON.parse(localStorage.getItem('cadastro'))
+
+        console.log(pecas)
+    }   
+};
+
+function submete_transferencia(){ // ativada quando o botão de submeter for apertado
+    
+    //Variáveis locais
+    let origem = 0
+    let setor_origem
+    let setor_destino
+
+
+    //Checa algum imput está vazio
+    if(document.getElementById("inputTransferencia01").value == "" && document.getElementById("inputTransferencia02").value == "" && document.getElementById("inputTransferencia03").value == "" && document.getElementById("inputTransferencia04").value == ""){
+        alert("Todos os campos estão vazios")
+        return 0
+    }
+
+    if(document.getElementById("inputTransferencia01").value == ""){ // Qunatidade
+        alert("O código de produto está vazio.")
+        return 0
+    }
+    if(document.getElementById("inputTransferencia02").value == ""){ // Quantidade
+        alert("A quantidade está vazia.")
+        return 0
+    }
+    if(document.getElementById('inputTransferencia03').value == ""){ // Quantidade
+        alert("O setor de origem está vazio")
+        return 0
+    }
+    if(document.getElementById('inputTransferencia04').value == ""){ // Quantidade
+        alert("O setor de destino está vazio")
+        return 0
+    }
+    
+
+
+    //Checa se o código existe
+    if(pecas.codigo.includes(document.getElementById("inputTransferencia01").value) == false){ // Entra no loop caso não exista 
+        alert("Esse código não existe")
+        return 0
+    }
+
+        // Checa se é um número
+    if(isNaN(Number(document.getElementById('inputTransferencia02').value))){
+        alert("A quantidade precisa ser um número.")
+        return 0
+    }
+
+    // Checa se a origem e o destino são iguais
+    setor_origem = document.getElementById('inputTransferencia03').value
+    setor_destino = document.getElementById('inputTransferencia04').value
+    setor_origem.toUpperCase()
+    setor_destino.toUpperCase()
+
+    if(setor_origem == setor_destino){
+        alert("os campos 3 (origem) e  o campo 4 (destino) são iguais.")
+        return 0
+    }
+
+    // Checa se a origem existe
+    if(movimento.setor.includes(document.getElementById("inputTransferencia03").value) == false){ //Entra no loop caso não exista
+        alert("Esse setor não existe")
+        return 0
+    }
+
+    //Checa se há uma quantidade suficiente na origem
+    for (let x = 0; x < movimento.codigo.length; x ++){ // (x) - passa pela lista movimento
+
+        if(document.getElementById("inputTransferencia03").value == movimento.setor[x]){ // Alinha os dois ponteiros
+            if(movimento.inout[x] == 'in'){ // Caso seja entrada
+                origem = origem + Number(movimento.quantidade[x])
+            }
+            else if (movimento.inout[x] == 'out'){ // Caso seja saída
+                origem = origem - Number(movimento.quantidade[x])
+            }
+        }
+    }
+    console.log(1, origem, Number(document.getElementById("inputTransferencia02").value))
+    if(origem < Number(document.getElementById("inputTransferencia02").value)){ // Checa se há peças o suficiente na origem
+        console.log(2)
+        alert(`Não há peças o suficiente para mover. Peças restantes: ${origem} `)
+        return 0
+    }
+
+    //Transferência de peças
+
+    //Formatação da data
+    data = new Date() // Pega a data do navegador
+    data.toLocaleDateString('pt-BR') // Seta a data ao formato brasileiro
+    mes = String(data.getMonth() + 1).padStart(2, '0')  // Formata o mês para ficar 0X caso seja menor que 10
+    dia = String(data.getDate()).padStart(2, '0')   // Formata o DIA para ficar 0X caso seja menor que 10
+
+
+
+    /*movimento = { 
+    codigo :        [],
+    mes :           [],
+    dia:            [],
+    quantidade :    [],
+    setor:          [],
+    inout:          [],
+    }*/
+
+    //Retirada das peças da origem
+    movimento.codigo.push(document.getElementById("inputTransferencia01").value)
+    movimento.mes.push(mes)
+    movimento.dia.push(dia)
+    movimento.quantidade.push(document.getElementById("inputTransferencia02").value)
+    movimento.setor.push(document.getElementById("inputTransferencia03").value)
+    movimento.inout.push('out')
+
+
+
+    //Entrada das peças no destino
+    movimento.codigo.push(document.getElementById("inputTransferencia01").value)
+    movimento.mes.push(mes)
+    movimento.dia.push(dia)
+    movimento.quantidade.push(document.getElementById("inputTransferencia02").value)
+    movimento.setor.push(document.getElementById("inputTransferencia04").value)
+    movimento.inout.push('in')
+
+    // Retorna a mudança no output
+
+    const li = document.getElementById("janela_output")
+    const ul = document.createElement("ul");
+    ul.textContent = `- codigo:${movimento.codigo[movimento.codigo.length - 1]} --- Setor:${movimento.setor[movimento.codigo.length - 2]}, QTD:${movimento.quantidade[movimento.codigo.length - 2]} ---> Setor:${movimento.setor[movimento.codigo.length - 1]}, QTD:${movimento.quantidade[movimento.codigo.length - 1]}`;
+    li.appendChild(ul);
+
+
+    // Atualização do local storage
+    localStorage.setItem("movimento", JSON.stringify(movimento))
+    console.log('Local Storage atualizado.')
+
+
+    // Retorno da transferência concluída
+    alert("Transferência concluída com sucesso.")
+    console.log(movimento)
+
+}
+
+function descarta_tranferência(){
 
 }

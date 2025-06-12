@@ -1003,3 +1003,9 @@ input, select {
     margin: clamp(20px, 10dvh, 15dvh) auto;
     box-shadow: 10px 10px 15px hsla(0, 0%, 0%, 0.5);
 }
+
+.botao_tranferencia{
+    width: 25dvw;
+    height: 5dvh;
+    justify-self: center;
+}

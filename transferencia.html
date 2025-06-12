@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <script src="script.js"></script>
 </head>
-<body onload="inicio_cadastro()">
+<body onload="inicio_transferencia()">
     <section class="sombra_navbar">
         <header>
             <a href="menu.html"><img src="imgs/logo_empresa.png" alt="Logo Ferragens Negrão" class="logo"></a>
@@ -32,10 +32,9 @@
             <input type="text" id="inputTransferencia02" placeholder="Quantidade do produto">
             <input type="text" id="inputTransferencia03" placeholder="Setor de origem">
             <input type="text" id="inputTransferencia04" placeholder="Setor de destino">
+            <button class="botao_tranferencia"onclick="submete_transferencia()">Transferir</button>
         </article>
-        <article class="output_transferencia">
-            <section id="janela_output">
-            </section>
+        <article class="output_transferencia" id="janela_output">
         </article>
     </main>
 
