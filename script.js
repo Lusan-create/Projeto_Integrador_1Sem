@@ -218,7 +218,7 @@ function faz_rastreio(){
         quantidade:[]
     }
     let total = 0
-
+ 
     let rastreio = document.getElementById('cod_rastreio').value; // entrada do input
     lista.codigo = rastreio // Coloca o código no objeto
     if(rastreio == ''){
@@ -281,9 +281,9 @@ function faz_rastreio(){
             formatado = formatado + `${setor} = ${qtd}, `
         }
     }
-    for (let x = 0; x < pecas.codigo.length; x++){
+    for (let x = 0; x < pecas.codigo.length; x++){ //Passa pelo objeto 
         if (document.getElementById("cod_rastreio").value == pecas.codigo[x] ){
-            qtd_total = pecas.total
+            qtd_total = pecas.total[x]
         }
     }
 
