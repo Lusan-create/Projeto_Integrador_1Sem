@@ -586,6 +586,7 @@ function descarta_saida(){
                 localStorage.setItem("cadastro", JSON.stringify(pecas))
                 
                 alert('Item retirado.')
+                return 0
                 
             }
         }
@@ -731,7 +732,7 @@ function Descarta_entrada(){
             console.log(movimento.codigo [movimento.codigo.length - 1])
             if (pecas.codigo[i] == movimento.codigo[movimento.codigo.length - 1]){
                 
-                pecas.total[i] = pecas.total[i] - movimento.quantidade[-1] // Reverte a quantidade total de itens
+                pecas.total[i] = Number(pecas.total[i]) - Number(movimento.quantidade[movimento.codigo.length - 1]) // Reverte a quantidade total de itens
                 
                 /* Removendo as informações do objeto movimento*/
                 movimento.codigo.pop() // Remove o ultimo código
@@ -753,8 +754,18 @@ function Descarta_entrada(){
 
                 
                 /* Remove o ultimo item do retorno*/
-                li = document.getElementById('entrada_out')
-                li.removeChild(li.lastElementChild)
+
+                const li = document.getElementById('entrada_out')
+                const last = li.lastElementChild
+
+                if (last){
+                    li.removeChild(li.lastElementChild)
+                }
+                else{
+                    console.warn("Error: Não há elementos para remover");
+                    return 0
+                }
+                
 
                 localStorage.setItem("movimento", JSON.stringify(movimento)) // Salva as alterações no local storage
                 localStorage.setItem("cadastro", JSON.stringify(pecas))
