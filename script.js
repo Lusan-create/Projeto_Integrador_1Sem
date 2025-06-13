@@ -270,28 +270,25 @@ function faz_rastreio(){
 
     let formatado = `Código ${lista.codigo}: `
     referencia = 0
-    for (let i = 0; i < lista.setor.length; i++){ // Formata a saída.
-        referencia = referencia + 1
+    // Formata a saída.
+    for (let i = 0; i < lista.setor.length; i++){  //Passa pelo obejto lista (i)
 
-        if(referencia == lista.setor.length){
-            let setor = String(lista.setor[i])
-            let qtd = String(lista.quantidade[i])
+        let setor = String(lista.setor[i])
+        let qtd = String(lista.quantidade[i])
+
+        if(qtd > 0){
             console.log(qtd)
-            formatado = formatado + `${setor} = ${qtd}.`
+            formatado = formatado + `  ${setor} = ${qtd}.`
         }
-        else{
-            let setor = String(lista.setor[i])
-            let qtd = String(lista.quantidade[i])
-            formatado = formatado + `${setor} = ${qtd}, `
-        }
+
     }
-    for (let x = 0; x < pecas.codigo.length; x++){ //Passa pelo objeto 
+    for (let x = 0; x < pecas.codigo.length; x++){ //Passa pelo objeto pecas (x)
         if (document.getElementById("cod_rastreio").value == pecas.codigo[x] ){
             qtd_total = pecas.total[x]
         }
     }
 
-    formatado = formatado + `  Total: ${qtd_total}`
+    formatado = formatado + `      Total: ${qtd_total}`
     console.log(lista)
     return alert(formatado)
     
@@ -938,6 +935,15 @@ function ir_estoque(){
 
 function inicio_estoque(){
 
+    // Muda o user name de admin para visitante caso seja o visitante
+    user = localStorage.getItem("user")
+    if(user == "Visitante"){
+        user = "Visitante"
+        document.getElementById("username").innerText = "Visitante"
+
+    }
+
+
     let teste = JSON.parse(localStorage.getItem('movimento'))
 
     if (teste.codigo.length != 0  &&  teste != null && teste.codigo != undefined){ // Checa se o objeto 'movimento' está vazio
@@ -995,6 +1001,15 @@ function ir_catalogo(){
 };
 
 function inicio_catalogo(){  /* Puxa o LocalStorage e printa os itens salvos no catálogo */
+
+    // Caso seja visitante, o username fica visitante
+    user = localStorage.getItem("user")
+    if(user == "Visitante"){
+        user = "Visitante"
+        document.getElementById("username").innerText = "Visitante"
+
+    }
+
     let teste = JSON.parse(localStorage.getItem("cadastro"))/* Váriavel para teste do local storage */
     console.log(teste)  
     if (pecas.codigo.length == 0 && teste !== null && teste.codigo !== undefined){
@@ -1022,6 +1037,14 @@ function reset_listas(){
 /* ---------------------------------------------------------------- Gráficos ------------------------------------------------ */
 
 function inicio_graficos(){
+
+    // Caso seja visitante, o username fica visitante
+    user = localStorage.getItem("user")
+    if(user == "Visitante"){
+        user = "Visitante"
+        document.getElementById("username").innerText = "Visitante"
+
+    }
 
 
     /* Leitura do local storage */

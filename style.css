@@ -432,7 +432,8 @@ main {
 /*-------------------Tela Cadastro---------------------------------*/
 /* Estilo para o formulário com grid */
 .form-grid {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 20px; /* Espaçamento entre os grupos de campos */
     width: 30dvw; /* Limita a largura do formulário */
     margin: 0 auto; /* Centraliza o formulário na página */
@@ -463,30 +464,30 @@ input, select {
 
 /* Estilo para os botões */
 .form-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold; /* Adiciona negrito ao texto dos botões */
-    background-color: #333131;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
+    padding:            10px 20px;
+    font-size:          1rem;
+    font-weight:        bold; /* Adiciona negrito ao texto dos botões */
+    background-color:   #333131;
+    color:              white;
+    border:             none;
+    border-radius:      5px;
+    cursor:             pointer;
+    text-align:         center;
 
     width: 25dvw;
+
+    justify-self:       center;
+    align-self:         center;
 }
 
 .form-buttons{
-    align-content: center;
-    justify-items: center;
+    padding-left:       2dvw;
 
-    border-style: solid;
 
-    
 }
 
 .form-button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; 
 }
 
 
@@ -1099,6 +1100,7 @@ input, select {
     height: 60dvh;
     margin: clamp(20px, 10dvh, 15dvh) auto;
     box-shadow: 10px 10px 15px hsla(0, 0%, 0%, 0.5);
+    padding: 1%;
 }
 
 .botao_tranferencia{
