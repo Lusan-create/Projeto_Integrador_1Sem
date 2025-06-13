@@ -434,7 +434,7 @@ main {
 .form-grid {
     display: grid;
     gap: 20px; /* Espaçamento entre os grupos de campos */
-    max-width: 600px; /* Limita a largura do formulário */
+    width: 30dvw; /* Limita a largura do formulário */
     margin: 0 auto; /* Centraliza o formulário na página */
 }
 
@@ -466,13 +466,23 @@ input, select {
     padding: 10px 20px;
     font-size: 1rem;
     font-weight: bold; /* Adiciona negrito ao texto dos botões */
-    background-color: #0c0c0c;
+    background-color: #333131;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
-    flex: 1; /* Faz os botões ocuparem o mesmo tamanho */
+
+    width: 25dvw;
+}
+
+.form-buttons{
+    align-content: center;
+    justify-items: center;
+
+    border-style: solid;
+
+    
 }
 
 .form-button:hover {

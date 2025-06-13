@@ -202,6 +202,8 @@ function armazenamento(){
 
 function faz_rastreio(){
 
+    let rastreio = document.getElementById('cod_rastreio').value
+
     movimento = JSON.parse(localStorage.getItem("movimento"))  //Entra o objeto movimento   
     pecas = JSON.parse(localStorage.getItem('cadastro'))        //Entra o objeto
 
@@ -209,6 +211,8 @@ function faz_rastreio(){
     console.log(pecas)
     console.log('Objeto movimento:')
     console.log(movimento)
+    
+
     
     let qtd_total = 0
 
@@ -219,7 +223,7 @@ function faz_rastreio(){
     }
     let total = 0
  
-    let rastreio = document.getElementById('cod_rastreio').value; // entrada do input
+    
     lista.codigo = rastreio // Coloca o código no objeto
     if(rastreio == ''){
         alert('você não escreveu nada no rastreio de peças')
@@ -291,10 +295,105 @@ function faz_rastreio(){
     console.log(lista)
     return alert(formatado)
     
+}
+
+function dropdown_rastreio(){
 
 
 
+    let rastreio = document.getElementById('rastreio_dropdown').value
 
+    movimento = JSON.parse(localStorage.getItem("movimento"))  //Entra o objeto movimento   
+    pecas = JSON.parse(localStorage.getItem('cadastro'))        //Entra o objeto
+
+    console.log('Objeto Pecas:')
+    console.log(pecas)
+    console.log('Objeto movimento:')
+    console.log(movimento)
+    
+
+    
+    let qtd_total = 0
+
+    let lista = { // objeto para organizar as informações
+        codigo: 'codigo',
+        setor: [],
+        quantidade:[]
+    }
+    let total = 0
+ 
+    
+    lista.codigo = rastreio // Coloca o código no objeto
+    if(rastreio == ''){
+        alert('você não escreveu nada no rastreio de peças')
+        return 0
+    }
+
+    if(pecas.codigo.includes(rastreio)){} // Checa se o código  existe no sistema
+    else{
+        return alert('Esse código não existe')
+    }
+
+    if(movimento.codigo.includes(rastreio)){} // Checa se o código possui algum movimento
+    else{
+        return alert('Não há movimentos com esse código')
+    }
+
+    // Cadastra os setores
+    for (let i = 0; i < movimento.codigo.length; i++){ 
+        if(lista.setor.includes(movimento.setor[i]) != true && movimento.codigo[i] == lista.codigo){
+            lista.setor.push(movimento.setor[i])
+            lista.quantidade.push(0)
+        }
+    }
+
+    //Encontra as quantidades
+    for (let i= 0; i < lista.setor.length ; i++){ // Passa pelo objeto lista de setores
+        
+        for (let x = 0; x < movimento.codigo.length; x ++){ // Passa pela lista de setores do objeto movimento
+            
+            if(movimento.codigo[x] == lista.codigo && lista.setor[i] == movimento.setor[x]){ // Checa se o código e o setor são correspondentes
+                if (movimento.inout[x] == 'in' && lista.codigo == movimento.codigo[x]){ // Soma caso seja entrada
+
+                        lista.quantidade[i] = Number(lista.quantidade[i]) + Number(movimento.quantidade[x])
+
+                }
+                else if(movimento.inout[x] == 'out' && lista.codigo == movimento.codigo[x]) { // Subtrai caso seja saída
+
+                    lista.quantidade[i] = Number(lista.quantidade[i]) - Number(movimento.quantidade[x])     
+                }
+            }
+        }
+    }
+    console.log(lista)
+
+    let formatado = `Código ${lista.codigo}: `
+    referencia = 0
+    for (let i = 0; i < lista.setor.length; i++){ // Formata a saída.
+        referencia = referencia + 1
+
+        if(referencia == lista.setor.length){
+            let setor = String(lista.setor[i])
+            let qtd = String(lista.quantidade[i])
+            console.log(qtd)
+            formatado = formatado + `${setor} = ${qtd}.`
+        }
+        else{
+            let setor = String(lista.setor[i])
+            let qtd = String(lista.quantidade[i])
+            formatado = formatado + `${setor} = ${qtd}, `
+        }
+    }
+    for (let x = 0; x < pecas.codigo.length; x++){ //Passa pelo objeto 
+        if (rastreio == pecas.codigo[x] ){
+            qtd_total = pecas.total[x]
+        }
+    }
+
+    formatado = formatado + `  Total: ${qtd_total}`
+    console.log(lista)
+    return alert(formatado)
+    
 }
 
 /* --------------------------------------------------------Saída de peças -------------------------------------------------- */
