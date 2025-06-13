@@ -21,7 +21,13 @@
             <ul>
                 <li><a href="menu.html">PEÇAS</a></li>
                 <li><a href="estoque.html">ESTOQUE</a></li>
-                <li><a href="menu.html">RASTREIO</a></li>
+                <li class="dropdown_container">
+                    <a href="menu.html">RASTREIO</a>
+                    <div class="dropdown">
+                        <input type="text" id="rastreio_dropdown" placeholder="Digite o código de rastreio...">
+                        <button onclick="faz_rastreio()" id="bt_dropdown">Rastrear</button>
+                    </div>
+                </li>
                 <li><a href="catalogo.html">CATÁLOGO</a></li>
             </ul>
         </nav>
@@ -33,7 +39,7 @@
             <section class="article_pecas">
   
                 <section class="pecas_input">
-                    <label for="cod_produto" class="form-label"> Código do produto</label>
+                    <label for="cod_qtd" class="form-label"> Código do produto</label>
                     <input type="text" id="cod_produto" placeholder="Digite o código do produto...">
                 </section>
 

@@ -50,6 +50,12 @@ footer {
     margin-right: 20px;
 }
 
+.navbar {
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+}
+
 .navbar ul {
     display: flex;
     justify-content: space-around;
@@ -57,6 +63,13 @@ footer {
     background-color: hsl(0, 0%, 25%);
     list-style-type: none;
 }
+
+.dropdown_container {
+    position: relative;
+    perspective: 600px;
+} 
+
+
 
 .navbar ul li a {
     background-color: hsl(0, 0%, 25%);
@@ -74,6 +87,70 @@ footer {
     font-size: clamp(1rem, 2.2dvh, 2rem);
     color: hsla(0, 0%, 100%, 0.5);
     text-shadow: 2px 2px 4px #000000;
+}
+
+.dropdown {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-60px) scale(0.95);
+    transform-origin: top center;
+    transition: 
+        opacity 0.5s ease,
+        transform 0.5s ease,
+        visibility 0.5s;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    padding: clamp(10px, 2.5dvh, 100px);
+    background-color: hsl(0, 0%, 40%);
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.dropdown input,
+.dropdown button {
+    width: 40%;
+    margin: 0 auto;
+    display: block;
+}
+
+#rastreio_dropdown {
+    width: clamp(200px, 20dvw, 300px);
+    height: clamp(100px, 10dvh, 100%);
+    padding: 10px;
+    font-size: clamp(.5rem, 1.5dvh, 1.5rem);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 80%, 0.3); 
+}
+
+#bt_dropdown {
+    margin-top: 20px;
+    background-color: hsl(0, 0%, 60%);
+    padding: clamp(8px, 1dvh, 20px);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: clamp(.5rem, 1.8dvh, 1.5rem);
+    cursor: pointer;
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 5px hsla(0, 0%, 60%, 0.3);
+    transition: .3s all ease;
+}
+
+#bt_dropdown:hover {
+    transform: scale(1.05);
+    background-color: hsl(0, 0%, 55%);
+    color: lightgray;
+    box-shadow: 3px 3px 3px hsla(0, 0%, 0%, 0.3),
+                -2px -2px 3px hsla(0, 0%, 60%, 0.3);
+}
+
+.dropdown_container:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
 }
 
 .sombra_navbar {
@@ -119,12 +196,17 @@ main {
     background-color: hsl(0, 0%, 0%);
     color: white;
     font-size: clamp(1rem, 2.8dvh, 2rem);
-    margin: 40px;
-    padding: 8px 0;
+    margin: clamp(10px, 10dvh, 40px);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.7);
+    box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.6);
+    transition: .3s all ease;
+}
+
+#bt_login:hover {
+    transform: scale(1.05);
+    color: hsl(0, 0%, 75%);
 }
 
 .body_bootstrap {
@@ -283,6 +365,11 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
+}
+
+.user_login p a {
+    text-decoration: none;
+    color: white;
 }
 
 
@@ -1005,7 +1092,24 @@ input, select {
 }
 
 .botao_tranferencia{
-    width: 25dvw;
-    height: 5dvh;
+    height: clamp(40px, 5dvh, 60px);
     justify-self: center;
+    font-size: clamp(1em, 2.2dvh, 2em);
+    padding: clamp(10px, 1dvh, 20px) clamp(20px, 2dvw, 40px);
+    background-color: hsl(0, 0%, 25%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.5),
+                5px 5px 5px hsla(0, 0%, 88%, 0.5);
+    transition: .3s all ease;
+    cursor: pointer;
+}
+
+.botao_tranferencia:hover {
+    transform: scale(1.02);
+    background-color: hsl(0, 0%, 30%);
+    color: lightgray;
+    box-shadow: 4px 4px 5px hsla(0, 0%, 0%, 0.5),
+                4px 4px 5px hsla(0, 0%, 88%, 0.5);
 }
