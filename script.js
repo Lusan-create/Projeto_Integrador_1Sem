@@ -775,6 +775,15 @@ function inicio_cadastro(){  /* Inicia ao carregar a página e Checa se há algo
 };
 
 function cadastro_peca(){ /* Realiza o cadastro de peças puxando as informações em cada campo e as coloca nos atributos do objeto. */
+
+    if(document.getElementById("catalogo_quantidade").value == "" || document.getElementById("catalogo_marca").value == "" ||
+       document.getElementById("catalogo_nome").value == "" || document.getElementById("catalogo_categoria").value == "" ||
+       document.getElementById("catalogo_preco").value == ""){
+
+        alert("Error: algum campo está vazio")
+        return 0
+    }
+
     let num = pecas.codigo.length + 1; /* Número do código. */
 
     /* Código */
