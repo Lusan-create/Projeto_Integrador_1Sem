@@ -338,17 +338,35 @@ function submete_saida(){ // Função ativada ao apertar o botão de submeter na
     let qtdSetor = 0
     let setor = document.getElementById('cod_setor').value
     
+    //Checa se algum campo está vazio
+    if(document.getElementById("cod_produto").value == "" || document.getElementById("cod_qtd").value == "" || document.getElementById("cod_setor").value == ""){
+        alert("Error:  Algum campo está vazio")
+        return 0
+    }
+
+    //Checa se o setor existe
+    if(movimento.codigo.includes(document.getElementById("cod_produto").value) == false){
+        alert("Esse setor não possui peças ou não existe")
+        return 0
+    }
+    //Checa se a quantidade é um número
+    if(isNaN(document.getElementById("cod_qtd").value)){
+        alert("A quantidade precisa ser um número")
+        return 0
+    }
+
+    
 
     for (let i = 0; i < pecas.codigo.length; i++){ // Loop que passa pelo atribulo código no objeto pecas. Serve para checar se o cósigo existe e encontrar para possiveis mudanças
         
         for  (let x = 0; x < movimento.setor.length; x ++){ // Encontra a quantidade armazenada no setor
             
 
-            if(movimento.codigo[x] == document.getElementById('cod_produto').value  && movimento.inout[x] == 'in'){
+            if(movimento.codigo[x] == document.getElementById('cod_produto').value  && movimento.inout[x] == 'in'){ //Caso seja entrada
                 qtdSetor = qtdSetor + Number(movimento.quantidade[x])
                 console.log(`teste : ${qtdSetor}`)
             }
-            else if(movimento.codigo[x] == document.getElementById('cod_produto').value  && movimento.inout[x] == 'out'){
+            else if(movimento.codigo[x] == document.getElementById('cod_produto').value  && movimento.inout[x] == 'out'){ //Caso seja saída
                 qtdSetor = qtdSetor - Number(movimento.quantidade[x])
                 console.log(`teste 02: ${qtdSetor}`)
             }
@@ -358,7 +376,7 @@ function submete_saida(){ // Função ativada ao apertar o botão de submeter na
             if (pecas.codigo[i] == document.getElementById("cod_produto").value){ // Checa se o código existe e retorna uma mensagem caso não exista
 
 
-                if(pecas.total[i] - document.getElementById("cod_qtd").value > 0 && document.getElementById("cod_qtd").value != 0){ // Checa se a saída é maior que zero Manda uma mensagem caso não seja
+                if(pecas.total[i] - document.getElementById("cod_qtd").value >= 0){ // Checa se a saída é maior que zero Manda uma mensagem caso não seja
 
                 /* Entrada do código */
                 let codigo = pecas.codigo[i]
@@ -421,7 +439,7 @@ function submete_saida(){ // Função ativada ao apertar o botão de submeter na
             }
         }
         else{
-            alert(`não há peças o suficiente Neste armazém (${setor}), /n/nPeças em neste setor: ${qtdSetor}`)
+            alert(`não há peças o suficiente neste setor (${setor}).  Peças em neste setor: ${qtdSetor}`)
             return 0
         }
     };
@@ -492,6 +510,8 @@ function ir_entrar_pecas(){
     };
 
 
+
+
 function inicio_entrada(){  /* Inicia ao carregar a página e Checa se há algo no local storage. Caso possua alguma informação, ele puxa o local storage. */
     let teste = JSON.parse(localStorage.getItem('movimento'))
     if (movimento.codigo.length == 0 && teste !== null && teste.codigo !== undefined){
@@ -510,11 +530,30 @@ function inicio_entrada(){  /* Inicia ao carregar a página e Checa se há algo 
     }
 };
 
+
+
 function submete_entrada(){
 
     let x = movimento.codigo.length
     let temp = 0
     
+    //Checa se algum campo está vazio
+    if(document.getElementById("cod_produto").value == "" || document.getElementById("cod_qtd").value == "" || document.getElementById("cod_setor").value == ""){
+        alert("Error:  Algum campo está vazio")
+        return 0
+    }
+
+    //Checa se a quantidade é um número
+    else if(isNaN(Number(document.getElementById("cod_qtd").value))){
+        alert("Error:  A quantidade não é um número")
+        return 0
+    }
+
+    //Checa se o código existe
+    else if(pecas.codigo.includes(document.getElementById("cod_produto").value) == false){
+        alert("Error:  Esse código não existe")
+        return 0
+    }
 
     for (let i = 0; i < pecas.codigo.length; i++){
 
@@ -977,7 +1016,7 @@ function inicio_graficos(){
                 console.log(info02)
                 
                 if( label02.includes(pecas.codigo[x])){
-                    info02[info02.length - 1] = Number(info02[info02.length - 1]) + Number(movimento.codigo[i])
+                    info02[info02.length - 1] = Number(info02[info02.length - 1]) + Number(movimento.quantidade[i])
                 }
                 else{
                 label02.push(pecas.codigo[x])
